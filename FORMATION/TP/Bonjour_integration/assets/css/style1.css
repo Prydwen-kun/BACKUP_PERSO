@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #fff;
+  background-image: url(../img/motif.jpg);
+}
+
+header {
+  background-color: #F5F5F5;
+}
+
+footer {
+  border: 1px solid white;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #CC0000;
+  cursor: pointer;
+}
+
+.header_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.margin_auto {
+  margin: auto;
+}
+
+.logo_container {
+
+  flex: 1 1 50%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.logo_main {
+  background-color: #F5F5F5;
+
+}
+
+.menu {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.menu_link {
+
+  flex: 1 1 33%;
+}
+
+/* Main Content */
+.content_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+
+}
+
+/* Toute les box */
+.box {
+  flex: 1 1 50%;
+  /* width: 20%; */
+}
+
+.box1 {
+  flex: 1 1 50%;
+}
+
+.box2 {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  background-color: #FFFFFF;
+
+
+}
+
+.box3 {
+
+  flex: 1 1 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.box4 {
+
+  flex: 1 1 50%;
+}
+
+.box5 {
+
+  flex: 1 1 20%;
+}
+
+.box6 {
+
+  flex: 1 1 30%;
+}
+
+div.box2 {
+  text-align: center;
+  vertical-align: middle;
+  text-wrap: balance;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+div.box2 h4 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+div.box3 {
+  color: white;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+div.box3 h2 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+div.box3 p {
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center;
+}
+
+.content_image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+}
+
+footer {
+  padding: 40px;
+}
+
+.footer_container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_partenaire {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.partenaire_logo {
+  flex: 1 1 25%;
+}
+
+@media screen and (max-width: 738px) {
+
+  .content_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  
+  }
+}

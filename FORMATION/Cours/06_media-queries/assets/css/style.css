@@ -1,0 +1,48 @@
+h1{
+    text-align: center;
+    color: blue;
+    padding: 5%;
+    display: none;
+
+}
+
+/* GRAND ECRAN */
+
+@media screen  and (min-width: 1201px) {
+    body{
+        background-color: chocolate;
+    }
+    .sec1{
+        display: block;
+    }
+}
+
+/* NORMAL */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    body{
+        background-color: red;
+    }
+    .sec2{
+        display: block;
+    }
+}
+
+/* TABLETTE */
+@media screen and (min-width: 502px) and (max-width: 768px) {
+    body{
+        background-color: lightblue;
+    }
+    .sec3{
+        display: block;
+    }
+}
+
+/* MOBILE */
+@media screen and (max-width: 501px) {
+    body{
+        background-color: lightcoral;
+    }
+    .sec4{
+        display: block;
+    }
+}

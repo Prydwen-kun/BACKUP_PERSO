@@ -1,0 +1,50 @@
+body {
+  background-color: aliceblue;
+}
+
+.box {
+  width: 250px;
+  height: 250px;
+}
+
+.c1 {
+  background-color: aqua;
+  float: left;
+}
+
+.c2 {
+  background-color: blueviolet;
+  float: left;
+}
+
+.c3 {
+  background-color: chartreuse;
+  float: left;
+}
+
+.c4 {
+  background-color: crimson;
+  float: left;
+}
+
+.c5 {
+  clear: left;
+  background-color: wheat;
+}
+
+.c_6 {
+  background-color: chocolate;
+  height: 200px;
+  width: 200px;
+  display: block;
+  position: relative;
+}
+
+.category {
+  height: 100px;
+  width: 100px;
+  padding: 12px;
+  background-color: red;
+  position: relative;
+  left: 50px;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+</head>
+
+<body>
+  <h1>Inscription</h1>
+  <hr>
+  <!-- Methode GET transmet les données via URL // POST transmet les données via masqué-->
+  <form action="traitement.php" method="post">
+    <!--action pour envoyer données vers fichier de traitement et method -> methode d'envoi POST ou GET-->
+    <div>
+      <label for="woman"><input type="radio" name="genre" value="woman" id="woman" />Femme</label>
+      <label for="man"><input type="radio" name="genre" value="man" id="man" />Homme</label>
+      <label for="other"><input type="radio" name="genre" value="other" id="other" />Non genré</label>
+    </div>
+    <!-- input : attribute -> type name value id -->
+    <div>
+      <label for="mail">Email :
+        <!--label attribute 'for' -> target input : id to link the two-->
+        <input type="email" name="submitted-mail" placeholder="david@david.com" id="mail" required />
+        <!-- attribut required pour imposer en front end de remplir avant de submit-->
+      </label>
+    </div>
+
+    <div>
+      <label for="password">Mot de passe :<br>
+        <input type="password" id="password" name="submitted-password" placeholder="Entrez votre mot de passe" />
+      </label>
+    </div>
+    <!-- DATE et liste de choix pour date de naissance -->
+    <label for="jour">Date de naissance</label><br>
+    <input type="number" name="jour" id="jour" placeholder="Jour" min="1" max="31" />
+    <div>
+      <select name="mois" id="mois_select" style="color: blue;">
+        <option value="Janvier">Janvier</option>
+        <option value="Février">Février</option>
+        <option value="Mars">Mars</option>
+        <option value="Avril">Avril</option>
+        <option value="Mai">Mai</option>
+        <option value="Juin">Juin</option>
+        <option value="Juillet">Juillet</option>
+        <option value="Août">Août</option>
+        <option value="Septembre">Septembre</option>
+        <option value="Octobre">Octobre</option>
+        <option value="Novembre">Novembre</option>
+        <option value="Décembre">Décembre</option>
+      </select>
+    </div>
+    <input type="number" name="annee" id="annee" placeholder="Année" min="1900" max="2050" />
+    <div>
+      <div id="skills" class="title">Compétences</div>
+      <label for="php">PHP<input type="checkbox" id="php" name="php" value="php"></label>
+      <label for="js">JS<input type="checkbox" id="js" name="js" value="js"></label>
+      <label for="css">CSS<input type="checkbox" name="css" id="css" value="css"></label>
+    </div>
+    <!-- Different example de type d'input -->
+    <div>Fichier <input type="file" name="cv" id="cv" accept="image/png"></div>
+    <div>Color picker <input type="color" name="color" id="color" value="#af1fbf"></div>
+    <div> Slider <input type="range" name="price" id="price" min="0" max="500" value="400" step="100"></div>
+    <div>
+      <label for="zonetexte">Message</label>
+      <div>
+        <textarea name="zonetexte" id="zonetexte" cols="20" rows="5">
+
+        </textarea>
+      </div>
+    </div>
+    <div>
+      <select name="" id="">
+
+      </select>
+    </div>
+    <div>
+      <input type="reset"><!--type reset sert à vider le form-->
+    </div>
+
+    <button type="submit">S'inscrire</button>
+  </form>
+  <br>
+  <a href="./form_autoformation.html">Déjà un compte? Connectez-vous</a>
+</body>
+
+</html>

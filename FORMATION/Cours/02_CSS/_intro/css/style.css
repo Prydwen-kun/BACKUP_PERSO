@@ -1,0 +1,21 @@
+/* ciblage par balise */
+h1 {
+  color: #aa1000;
+  font-size: 64px;
+}
+/* ciblage par id */
+#p1 {
+  color: lightseagreen;
+}
+/* ciblage par classe */
+.color-red {
+  color: #dd0200;
+}
+/* balise -> classe -> id */
+p {
+  color: white;
+}
+
+.body_class {
+  background-color: #252525;
+}

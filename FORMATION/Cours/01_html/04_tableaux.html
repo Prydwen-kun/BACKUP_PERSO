@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableaux</title>
+</head>
+
+<body>
+  <!-- tableaux en html -->
+  <!-- tbody wrap td et tr -->
+  <!-- thead -> titre / nom de colonnes-->
+  <!-- attribut : cellpadding cellspacing colspan rowspan -->
+  <table border="1" cellpadding="10" cellspacing="10">
+    <tbody>
+      <tr>
+        <td colspan="2">1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td rowspan="2">3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td colspan="2">6</td>
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <table border="3" cellpadding="10" style="border-collapse: collapse; background-color: lightgrey;"><!--style="border-collapse: collapse;" -> fusionne les bordures du tableau-->
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>Doe</td>
+        <td>John</td>
+      </tr>
+      <tr>
+        <td>Doe</td>
+        <td>Jane</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</body>
+<!--ALT+MAJ+F -> Format Doc-->
+<!--ALT+MAJ+BAS -> DUPLIQUER SELECTION // CTRL+D Modif à plusieurs curseurs-->
+</html>
