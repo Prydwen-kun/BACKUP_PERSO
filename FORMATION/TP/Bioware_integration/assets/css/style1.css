@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    /* open sans */
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+    /* Oswald */
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+}
+
+
+
+
+.OpenSans14px {
+    font-family: "Open Sans";
+    font-size: 14px;
+}
+
+/* CREATE SOMETHING -> Oswald 120px bold lineH 132 letterSpace 0% white + shadow 0 4 40 #000000 85% */
+.Oswald120px {
+    font-family: "Oswald", sans-serif;
+    font-size: 120px;
+    font-weight: bold;
+    line-height: 132px;
+    letter-spacing: 0%;
+    color: #fff;
+    text-shadow: 0px 4px 40px rgba(0, 0, 0, 85%);
+}
+
+/* header font Open sans 14px bold lineH 21 letterspace 2% color 606060 100% shadow 0 4 4 #000000 25%
+header.OpenSans14px {
+    font-weight: bold;
+    line-height: 21px;
+    letter-spacing: 2%;
+    color: #606060;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+}
+*/
+
+
+/* passionate about -> Open sans 16px regular lineH auto letterS Mixed #fff shadow 4 4 8 #000 75%*/
+.introduction p {
+    font-family: "Open sans";
+    font-size: 16px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #fff;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 75%);
+}
+
+/* discover button Open sans 14px semi bold lineH 18 letterS 10% #fff shadow 0 4 4 #000 25% */
+.button_container {
+    font-weight: bold;
+    line-height: 18px;
+    letter-spacing: 10%;
+    color: #fff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+body {
+    object-fit: cover;
+
+}
+
+/* ///////////////////////////////////HEADER///////////////////////////////////////////// */
+header {
+    background-color: rgba(0, 0, 0, 90%);
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100px;
+}
+
+.header_container {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_container a {
+    flex: 1 1 50%;
+    text-decoration: none;
+    color: #606060;
+    font-weight: bold;
+    line-height: 21px;
+    letter-spacing: 2%;
+    color: #606060;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+.Bioware_logo {
+    text-align: center;
+}
+
+.menu {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.menu a:hover {
+    color: #576b8c;
+}
+
+/* ///////////////////////////////////HEADER///////////////////////////////////////////// */
+
+/* ///////////////////////////////////CONTENT///////////////////////////////////////////// */
+.main_container {
+    height: 1234px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content_container {
+    flex: 1 1 70%;
+    background-image: url(../img/backdrop.png);
+    background-position: center;
+    background-size: cover;
+    align-content: center;
+    text-align: left;
+    text-wrap: balance;
+
+}
+.introduction{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.button_container input {
+    height: 66px;
+    width: 242px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-family: Open sans;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 10%;
+    text-align: center;
+    align-content: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+    border: 1px solid #000;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.button_container input:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ///////////////////////////////////CONTENT///////////////////////////////////////////// */
+.games_logo {
+    width: 100%;
+    background-color: #292d33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamelogo_container {
+    flex: 1 1 17%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+
+.gamelogo_container img {
+
+    flex: 1 1 100%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+
+footer {
+    width: 100%;
+    flex: 1 1 13%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #191919;
+}
+
+/* ///////////////////////////FOOTER CONTENT/////////////////////////////////// */
+.footer_logo_container {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer_menu_container {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: row;
+    color: #666666;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+.social_menu {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.store_menu {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lien_externe {
+    text-decoration: none;
+    color: #999999;
+
+}
+
+.lien_externe:hover {
+    cursor: pointer;
+    color: #576b8c;
+}
+
+/* link footer open sans 14 semibold 24 10% #999999 shadow 0 4 4 #000 25%*/
