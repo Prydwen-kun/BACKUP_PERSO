@@ -87,7 +87,7 @@ header {
 }
 
 .header_container a {
-  flex: 1 1 50%;
+  flex: 1 1 auto;
   text-decoration: none;
   color: #606060;
   font-weight: bold;
@@ -98,7 +98,10 @@ header {
 }
 
 .Bioware_logo {
+  width : 50%;
+  flex: 1 1 50%;
   text-align: left;
+  object-fit: scale-down;
 }
 
 .menu {
@@ -107,7 +110,7 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-align: left;
+  text-align: center;
 }
 
 .menu a:hover {
