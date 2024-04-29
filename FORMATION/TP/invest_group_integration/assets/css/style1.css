@@ -49,6 +49,7 @@ a {
   font-family: "Satoshi", sans-serif;
   font-size: 18px;
 }
+
 .SatoshiMedium16 {
   font-family: "Satoshi", sans-serif;
   font-size: 16px;
@@ -75,8 +76,8 @@ a {
 /* HEADER */
 header {
   /* height: 70px; */
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .navigation {
@@ -88,7 +89,7 @@ header {
 }
 
 .navigation div {
-  flex: 1 1 auto;
+  flex: 1 1 50%;
 }
 
 .nav_menu {
@@ -101,14 +102,10 @@ header {
 }
 
 .nav_menu a {
-  margin: 32px;
+  margin: 2%;
 }
 
 /* HEADER */
-
-.content_container {
-  height: 3951px;
-}
 
 /* SECTION 1 */
 
@@ -135,8 +132,7 @@ header {
 }
 
 .pigBanner input {
-  max-width: 678px;
-  width: 229px;
+  max-width: 229px;
   height: 60px;
 }
 
@@ -155,7 +151,7 @@ header {
 
 /* SECTION SERVICES */
 .ourServices {
-  height: 675px;
+  /* height: 675px; */
   text-align: center;
   padding-top: 120px;
   padding-bottom: 120px;
@@ -168,6 +164,7 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: start;
+  /* flex-wrap: wrap; */
   text-align: center;
   margin-top: 80px;
   gap: 21px;
@@ -190,19 +187,17 @@ header {
 
 /* SECTION ABOUT US*/
 .aboutUs {
-  height: 556px;
   display: flex;
   flex-direction: row;
   background-color: #f6f6f6;
-  padding-left: 24%;
-  padding-right: 24%;
+  /* padding-left: 24%; */
+  /* padding-right: 24%; */
 }
 
 .aboutUs img {
   flex: 1 1 50%;
-  object-fit: scale-down;
+  object-fit: cover;
   width: 50%;
-  height: auto;
 }
 
 .aboutUs div {
@@ -223,7 +218,7 @@ header {
   background-color: #25db87;
   border: none;
   border-radius: 3px;
-  width: 204px;
+  max-width: 204px;
   height: 60px;
 }
 
@@ -232,7 +227,7 @@ header {
 /* SECTION CLIENT */
 
 .ourClients {
-  height: 665px;
+  /* height: 665px; */
   text-align: center;
   padding-left: 24%;
   padding-right: 24%;
@@ -287,7 +282,8 @@ header {
   margin-bottom: 32px;
   background-color: #d9d9d9;
 }
-.contact_form textarea{
+
+.contact_form textarea {
   height: 184px;
   margin-bottom: 32px;
   background-color: #d9d9d9;
@@ -305,7 +301,7 @@ header {
 
 /* FOOTER */
 
-footer{
+footer {
   height: 90px;
   color: #fff;
   background-color: #000829;
@@ -315,3 +311,50 @@ footer{
 }
 
 /* FOOTER */
+
+@media screen and (max-width:1200px) {
+  .pigBanner {
+
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+  }
+
+}
+
+@media screen and (max-width:700px) {
+
+
+
+  .navigation>div>a>img {
+    object-fit: scale-down;
+    width: 50%;
+  }
+
+  .SatoshiBold64 {
+    font-size: 32px;
+  }
+
+  .bullet_info_container {
+    flex-direction: column;
+  }
+
+
+}
+
+@media screen and (max-width:500px) {
+
+  * {
+    font-size: 12px !important;
+
+  }
+
+  .ourServices {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+
+}
