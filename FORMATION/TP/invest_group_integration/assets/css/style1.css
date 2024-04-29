@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Satoshi";
+  src:
+    local("Satoshi"),
+    url("../fonts/Satoshi/Satoshi-Bold.ttf") format("truetype"),
+    url("../fonts/Satoshi/Satoshi-Regular.ttf") format("truetype"),
+    url("../fonts/Satoshi/Satoshi-Medium.ttf") format("truetype");
+}
+
+/* margin 260px left right */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+a{
+  text-decoration: none;
+  color: #666b7f;
+}
+
+.SatoshiBold64 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 64px;
+  color: #000829;
+}
+
+.SatoshiBold20 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 20px;
+}
+
+.SatoshiBold24 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 24px;
+  color: #000829;
+}
+
+.SatoshiBold48 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 48px;
+  color: #000829;
+}
+
+.SatoshiMedium18 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 18px;
+}
+
+.SatoshiRegular20 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 20px;
+  color: #666b7f;
+}
+
+.SatoshiRegular18 {
+  font-family: "Satoshi", sans-serif;
+  font-size: 18px;
+  color: #666b7f;
+}
+.SatoshiRegular16{
+  font-family: "Satoshi", sans-serif;
+  font-size: 16px;
+  color: #666b7f;
+}
