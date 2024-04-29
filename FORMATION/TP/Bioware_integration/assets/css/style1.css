@@ -98,7 +98,7 @@ header {
 }
 
 .Bioware_logo {
-  width : 50%;
+  width: 50%;
   flex: 1 1 50%;
   text-align: left;
   object-fit: scale-down;
@@ -177,6 +177,7 @@ header {
   width: 100%;
   background-color: #292d33;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -233,7 +234,7 @@ footer {
 .footer_logo_container img {
   /* flex: 1 1 50%; */
   object-fit: scale-down;
-  
+
 }
 
 .footer_mid_container {
@@ -298,3 +299,101 @@ footer {
 }
 
 /* link footer open sans 14 semibold 24 10% #999999 shadow 0 4 4 #000 25%*/
+
+/* /////////////////////////MEDIA QUERY///////////////////// */
+
+/* 1200x */
+@media screen and (max-width:1200px) {
+  header {
+    height: 150px;
+
+  }
+
+  .header_container,
+  .introduction,
+  .gamelogo_container,
+  .button_container,
+  .footer_container {
+    padding: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .Bioware_logo img {
+    object-fit: scale-down;
+    width: 100%;
+    height: auto;
+  }
+
+  .footer_container {
+
+    justify-content: center;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .Oswald120px {
+    font-size: 60px;
+  }
+
+  .button_container input {
+    height: 66px;
+    width: auto;
+  }
+
+  .gamelogo_container {
+    flex: 1 1 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .gamelogo_container img {
+    max-width: 50%;
+    object-fit: scale-down;
+    padding: 5px;
+  }
+
+  .footer_logo_container {
+    flex: 1 1 20%;
+    flex-direction: column;
+  }
+
+  .footer_mid_container {
+    flex: 1 1 1%;
+  }
+
+  .EA_dark {
+    width: 50%;
+  }
+
+  .biologo_dark {
+    width: 80%;
+  }
+
+  .footer_menu_container {
+    flex: 1 1 50%;
+    justify-content: start;
+  }
+
+  .store_menu {
+    flex: 1 1 auto;
+  }
+
+  .social_menu {
+    flex: 1 1 auto;
+    margin-right: 5px;
+  }
+
+  .social_menu a {
+    font-size: 9px;
+  }
+
+  .store_menu a {
+    font-size: 9px;
+  }
+}
