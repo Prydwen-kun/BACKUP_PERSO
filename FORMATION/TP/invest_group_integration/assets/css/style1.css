@@ -16,6 +16,9 @@ a{
   text-decoration: none;
   color: #666b7f;
 }
+.Home_button{
+  color: #000829;
+}
 
 .SatoshiBold64 {
   font-family: "Satoshi", sans-serif;
@@ -61,3 +64,32 @@ a{
   font-size: 16px;
   color: #666b7f;
 }
+
+/* HEADER */
+.navigation{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 23px;
+}
+.navigation a{
+  flex: 1 1 auto;
+}
+/* HEADER */
+
+/* SECTION 1 */
+.pigBanner{
+  background-image: url(../img/hero-bkg.png);
+  background-size: cover;
+}
+.talkButton{
+  color: #fff;
+  background-color: #25db87;
+  border: none;
+  border-radius: 3px;
+}
+.talkButton:hover{
+  background-color: #41ff6e;
+}
+/* SECTION 1 */
