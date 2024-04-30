@@ -16,7 +16,10 @@
   <header>
     <button class="NavIcon" id="navButton" onclick="menuPop();">////</button>
     <a href="index.html" class="logo_home">Logo-Home</a>
-    <input type="text" placeholder="Search..." form="main_form" name="search_request" id="searchBar">
+    <form action="search.php" method="get" id="main_form">
+      <input type="text" placeholder="Search..." form="main_form" name="search_request" id="searchBar">
+      <input type="submit" id="submitButton" value="Search" form="main_form">
+    </form>
   </header>
   <div class="topNav" id="navMenu">
     <a href="#news">News</a>
@@ -43,7 +46,9 @@
           cum cupiditate.</p>
       </div>
     </section>
+
     <section class="About">
+      <h2>ABOUT</h2>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas esse officia harum quod dolorem quas dolore
         consectetur. Aliquam rem, modi natus sequi repellat molestias totam magni consequuntur ab laboriosam minus.
       </p>
@@ -58,6 +63,7 @@
       </p>
 
     </section>
+    <footer><p>Copyright Special permission</p></footer>
   </div>
 </body>
 
