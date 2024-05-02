@@ -16,4 +16,4 @@ function menuClose() {
     x[0].style.display = "none";
   }
 }
-console.log("Debug Console work as intended")
+console.log("Debug Console work as intended");
