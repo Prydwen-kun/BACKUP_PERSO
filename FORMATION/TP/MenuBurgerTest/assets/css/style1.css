@@ -47,8 +47,9 @@ body {
 
 #searchBar {
   flex: 1 1 60%;
-  height: 42px;
-  min-width: 60%;
+  height: inherit;
+  /* 42px; */
+  max-width: 60%;
   outline: none;
   border: 2px solid var(--background-primary);
   border-radius: 5px;
@@ -62,9 +63,11 @@ body {
 
 #submitButton {
   flex: 1 1 15%;
+  max-width: max-content;
   color: #ccc;
   background-color: #404040;
   border-radius: 3px;
+  padding: 2%;
 }
 
 .topNav {
