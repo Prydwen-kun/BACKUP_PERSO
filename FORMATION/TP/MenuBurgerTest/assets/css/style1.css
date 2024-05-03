@@ -169,3 +169,14 @@ footer{
     width: 64px;
   }
 }
+@media screen and (max-width:400px) {
+  .topNav {
+    width: 70px;
+  }
+
+  header>a, .topNav>a{
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
