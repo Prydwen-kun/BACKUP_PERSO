@@ -8,11 +8,20 @@ html{
 
 .container {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* align-items: stretch; */
     font-size: 2.4rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.2;
     color: green;
     background-color: rgb(36, 36, 36);
     padding: 50px 10%;
+}
+.container>div:nth-of-type(1){
+    /* text-align: left; */
+    margin: 20px 10vw;
 }
 
 .title_effect {
@@ -37,7 +46,10 @@ html{
 }
 
 .linkContainer {
+    height: max-content;
+    width: max-content;
     text-align: center;
+    margin: 20px auto;
 }
 
 .homeLink {
