@@ -3,18 +3,24 @@
   margin: 0;
 }
 
+:root {
+  --primary-color: #ff9900;
+  --background-primary: #090909;
+  --background-secondary: #ca7900;
+}
+
 html {
   font-size: 62.5%;
 }
 
 a {
   text-decoration: none;
-  color: #ff9900;
+  color: var(--primary-color);
   font-size: 3rem;
 }
 
 header {
-  background-color: #090909;
+  background-color: var(--background-primary);
   display: flex;
   width: 100%;
   position: fixed;
@@ -22,7 +28,7 @@ header {
 }
 
 body {
-  background-color: #ca7900;
+  background-color: var(--background-secondary);
   font-family: sans-serif;
 }
 
@@ -34,7 +40,7 @@ body {
   text-shadow: 2px 2px 2px #a1a1a1;
 }
 
-#main_form{
+#main_form {
   display: flex;
   width: 80%;
 }
@@ -43,9 +49,15 @@ body {
   flex: 1 1 60%;
   height: 42px;
   min-width: 60%;
-  border: 3px none;
-  border-radius: 3px;
+  outline: none;
+  border: 2px solid var(--background-primary);
+  border-radius: 5px;
   margin: 0 1%;
+}
+
+#searchBar:focus {
+  border: 2px solid var(--primary-color);
+
 }
 
 #submitButton {
@@ -105,8 +117,8 @@ body {
   flex: 1 1 auto;
   border: 1px solid rgb(51, 51, 51);
   border-radius: 3px;
-  border-top: 1px solid #ff9900;
-  border-left: 1px solid #ff9900;
+  border-top: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
   box-shadow: 4px 4px 4px #303030;
   padding: 2%;
 }
@@ -129,24 +141,25 @@ body {
   font-weight: 600;
   font-size: 3.2rem;
   padding: 5vh 10%;
-  color: #ff9900;
+  color: var(--primary-color);
   background-color: #303030;
   text-align: justify;
   text-wrap: pretty;
   /* overflow: hidden; */
 }
-.About h2{
+
+.About h2 {
   background-color: #404040;
   text-align: center;
   padding: 2%;
   border: 2px solid;
   border-top: 2px solid #fdd08b;
-  border-left:2px solid #fdd08b;
+  border-left: 2px solid #fdd08b;
   border-radius: 3px;
   box-shadow: 2px 2px 10px #000;
 }
 
-footer{
+footer {
   color: #fdd08b;
   background-color: #2e1c00;
   font-size: 1.2rem;
@@ -159,7 +172,8 @@ footer{
     width: 140px;
   }
 
-  header>a, .topNav>a{
+  header>a,
+  .topNav>a {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -169,12 +183,14 @@ footer{
     width: 64px;
   }
 }
+
 @media screen and (max-width:400px) {
   .topNav {
     width: 70px;
   }
 
-  header>a, .topNav>a{
+  header>a,
+  .topNav>a {
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 1px;
