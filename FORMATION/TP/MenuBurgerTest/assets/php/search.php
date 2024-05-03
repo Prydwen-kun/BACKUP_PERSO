@@ -27,21 +27,21 @@
             echo $message; ?>
 
             <br>
-            
+
             <p>Votre recherche :</p>
 
             <?php
             // echo $_POST["search_request"];
-            if (defined('$_POST')) {
-                echo $_POST["search_request"];
+            if (isset($_POST["search_request"])) {
+                echo htmlspecialchars($_POST["search_request"]);
                 linebreak();
-            } else if(!defined('$_POST')) {
-                echo "La requête est vide !";
+            } else if (defined('$_POST') == false) {
+                echo 'La requête est vide !';
             }
             linebreak();
-            if (defined('$_POST')) {
+            if (isset($_POST["search_request"])) {
                 if ($_POST["search_request"] == 666) {
-                    echo "C'est bien le nombre 666 !";
+                    echo htmlspecialchars("C'est bien le nombre 666 !");
                     linebreak();
                 }
             }

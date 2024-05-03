@@ -38,16 +38,16 @@
 }
 
 .homeLink {
-    color: #3f0000;
+    color: #c7b9b9;
     text-decoration: none;
-    border: 2px solid #3f0000;
+    border: 2px solid #700000;
     border-radius: 3px;
-    background-color: #1d213a;
+    background-color: #3a4272;
     font-size: 32px;
     font-weight: 600;
     transition: all 800ms ease;
 }
 
 .homeLink:hover {
-    background-color: #2d335a;
+    background-color: #5e6ab6;
 }
