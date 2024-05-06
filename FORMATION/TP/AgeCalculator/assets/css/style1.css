@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src:
+        local("Poppins"),
+        url("../fonts/Poppins-Regular.ttf") format("truetype"),
+        url("../fonts/Poppins-Bold.ttf") format("truetype"),
+        url("../fonts/Poppins-Italic.ttf") format("truetype");
+}
+
+:root {
+    --primaryColor: #683ad3;
+    --secondaryColor: #e0e0e0;
+    --activeButton: #000;
+    --labelColor: #797979;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Poppins";
+    background-color: var(--secondaryColor);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 20vh 20%;
+    padding: 5%;
+    border: 3px none;
+    border-radius: 20px;
+    border-bottom-right-radius: 200px;
+    background-color: #fff;
+}
+
+.form_container {
+    max-width: 80%;
+    flex: 1 1 100%;
+    color: var(--secondaryColor);
+    font-weight: bold;
+    font-size: 3.2rem;
+    border-bottom: 2px solid var(--secondaryColor);
+    padding: 5%;
+
+}
+
+.form_container form {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+.form_container>form>div {
+    width: 20%;
+}
+
+.form_container label {
+    color: var(--labelColor);
+    display: block;
+}
+
+.form_container>form>div>input {
+    color: var(--secondaryColor);
+    font-size: 3.2rem;
+    font-weight: 600;
+    height: inherit;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 3px;
+}
+
+.form_container>form>div>input:focus {
+    color: var(--activeButton);
+    border: 1px solid var(--primaryColor);
+}
+
+::placeholder {
+    color: var(--secondaryColor);
+}
+
+.submitContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    aspect-ratio: 1/1; /*cool css lol YOYO*/
+    position: relative;
+    top: -5vh;
+    left: 85%;
+    border: 3px none;
+    border-radius: 50%;
+    background-color: var(--primaryColor);
+}
+
+.submitContainer>input {
+    display: contents;
+    position: relative;
+    transform-origin: center;
+    left: 50%;
+    top: 50%;
+}
+
+.submitContainer>img {
+    
+    position: relative;
+    transform-origin: center;
+    /* left: 50%; */
+    /* top: 50%; */
+}
+
+.submitContainer:active {
+    background-color: var(--activeButton);
+}
+
+.age_container {
+    /* flex: 1 1 100%; */
+    color: #000;
+    font-size: 6.4rem;
+}
+
+.age_container tr>td:nth-of-type(1) {
+    display: inline;
+    color: var(--primaryColor);
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="./assets/css/style1.css">
+</head>
+<script type="text/javascript" src="./assets/js/main.js"></script>
+
+<body>
+    <section class="container">
+        <div class="form_container">
+            <form action="./assets/js/main.js" method="post" id="main_form">
+                <div>
+                    <label for="day">DAY</label>
+                    <input type="number" name="day" id="day" placeholder="DD" required>
+                </div>
+                <div>
+                    <label for="month">MONTH</label>
+                    <input type="number" name="month" id="month" placeholder="MM" required>
+                </div>
+                <div>
+                    <label for="year">YEAR</label>
+                    <input type="number" name="year" id="year" placeholder="YYYY" required>
+                </div>
+            </form>
+
+        </div>
+        <div class="submitContainer">
+            <input type="submit" value="" form="main_form">
+            <img src="./assets/img/icon-arrow.svg" alt="arrow" title="arrow submit" onclick="updateAgeCalculated();">
+        </div>
+        <div class="age_container">
+            <table>
+                <tr>
+                    <td>- -</td>
+                    <td>years</td>
+                </tr>
+                <tr>
+                    <td>- -</td>
+                    <td>months</td>
+                </tr>
+                <tr>
+                    <td>- -</td>
+                    <td>days</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</body>
+
+</html>
