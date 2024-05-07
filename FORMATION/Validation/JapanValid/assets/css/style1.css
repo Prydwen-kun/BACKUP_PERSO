@@ -1,0 +1,248 @@
+/* @font-face {
+  font-family: "";
+  src:
+    local(""),
+    url("") format("truetype"),
+    url("") format("truetype"),
+    url("") format("truetype");
+} */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* Barlow 400 */
+.Barlow400 {
+  font-family: 'Barlow', sans-serif;
+  /* font-size: 120px; */
+  font-weight: 400;
+  /* line-height: 132px; */
+  /* letter-spacing: 0%; */
+}
+
+/* Barlow 700 */
+.Barlow700 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+}
+
+:root {
+  --primaryColor: #e83f43;
+  --secondaryColor: #213442;
+  --activeButtonColor: #c53135;
+  --japanlogo: #000829;
+
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondaryColor);
+}
+
+.active {
+  color: var(--primaryColor);
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  padding: 2.3rem 0;
+  background-color: #fff;
+  box-shadow: 0rem 0.2rem 2.0rem rgba(0, 0, 0, 4%);
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 13.5%;
+
+}
+
+.navigation>div:nth-of-type(1) {
+  flex: 1 1 50%;
+  text-align: left;
+}
+
+.navigation>div:nth-of-type(2) {
+  flex: 1 1 50%;
+  text-align: right;
+}
+
+.LogoJapan {
+  color: var(--japanlogo);
+  font-size: 2.4rem;
+  line-height: 2.88rem;
+}
+
+.LogoJapan>span {
+  color: var(--primaryColor);
+}
+
+.nav_menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: end;
+  gap: 3.2rem;
+  color: var(--secondaryColor);
+  font-size: 1.8rem;
+  line-height: 2.16rem;
+}
+
+/* ///////////////////FIN HEADER//////////////////////////// */
+
+/* SECTION 1 */
+
+.heroBanner {
+  background-image: url(../img/hero-bkg\ 1.jpg);
+  background-repeat: no-repeat;
+  object-fit: cover;
+  min-height: 100vh;
+  padding: 35vh 30%;
+
+}
+
+.heroBanner>div {
+  border: 1px none;
+  border-radius: 6px;
+  background-color: #FFFFFFB2;
+  padding: 3.2rem;
+}
+
+.heroBanner>div>h1 {
+  font-size: 6.4rem;
+  line-height: 7.6rem;
+  color: var(--secondaryColor);
+  margin-bottom: 2.0rem;
+}
+
+.heroBanner>div>p {
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  color: var(--secondaryColor);
+  margin-bottom: 4.0rem;
+}
+
+.heroBanner>div>a {
+  font-size: 2.0rem;
+  line-height: 3.0rem;
+  color: #fff;
+  background-color: var(--primaryColor);
+  padding: 1.5rem 3.2rem;
+  border-radius: 3px;
+  transition: all 400ms ease;
+}
+
+.heroBanner>div>a:hover {
+  background-color: var(--activeButtonColor);
+}
+
+/* SECTION 2 ///////////////////////////////// */
+
+.Trips {
+  text-align: center;
+  padding: 10rem 13.5%;
+}
+
+.Trips>h2 {
+  color: var(--secondaryColor);
+  font-size: 5.6rem;
+  line-height: 5.8rem;
+}
+
+.Trips>p {
+  color: var(--secondaryColor);
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: 8rem;
+}
+
+.tripList_Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12rem;
+}
+
+.tripList_Container>div {
+  width: 33%;
+  height: 35vh;
+  flex: 1 1 33%;
+  color: #fff;
+  background-color: green;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  gap: 1.6rem;
+  padding: 3.2rem;
+}
+
+.tripList_Container>div p {
+  font-size: 3.6rem;
+  line-height: 5.4rem;
+}
+
+.tripList_Container>div a {
+  color: #fff;
+  background-color: var(--primaryColor);
+  font-size: 2rem;
+  line-height: 3rem;
+  width: 14.6rem;
+  height: 6rem;
+  transition: all 400ms ease;
+  padding: 1.5rem 3.2rem;
+  border-radius: 3px;
+}
+.tripList_Container>div a:hover{
+  background-color: var(--activeButtonColor);
+}
+
+.tripList_Container>div:nth-of-type(1) {
+  background-image: url(../img/history-img.jpg);
+}
+
+.tripList_Container>div:nth-of-type(2) {
+  background-image: url(../img/natural-img.jpg);
+}
+
+.tripList_Container>div:nth-of-type(3) {
+  background-image: url(../img/cultural-img.jpg);
+}
+
+.tripList_Container>div:nth-of-type(4) {
+  background-image: url(../img/matthieu-img.jpg);
+}
+
+/* SECTION 3 DESTINATION////////////////////////////// */
+.destination{
+  text-align: center;
+  padding: 10rem 0;
+}
+.destination>h3{
+  font-size: 5.6rem;
+  line-height: 5.8rem;
+  color: var(--secondaryColor);
+}
+.destination>p{
+  font-size: 2rem;
+  line-height: 3rem;
+  color: var(--secondaryColor);
+}
+.destination_box{
+  margin-top: 8rem;
+  margin-bottom: 9rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
