@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Japan Tour</title>
   <link rel="stylesheet" href="./assets/css/style1.css">
+  <link rel="script" href="./assets/js/main.js">
 </head>
+
+<script type="text/javascript" src="./assets/js/main.js"></script>
 
 <body>
   <header>
@@ -24,7 +27,7 @@
     </nav>
 
   </header>
-  <!-- point de rupture 1200px -->
+  <!-- point de rupture 1205px -->
 
   <section class="heroBanner"><!--prend tout l'ecran 1920x1080-->
     <div>
@@ -58,39 +61,90 @@
     <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor I</p>
     <div class="destination_box">
       <div>
-        <p class="Barlow700">Meguro River</p>
-        <p class="Barlow400">Tokyo</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Meguro River</p>
+          <p class="Barlow400">Tokyo</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Kinkaku-Ji</p>
-        <p class="Barlow400">Kyoto</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Kinkaku-Ji</p>
+          <p class="Barlow400">Kyoto</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Fushimi Inari</p>
-        <p class="Barlow400">Kyoto</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Fushimi Inari</p>
+          <p class="Barlow400">Kyoto</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Himeji Castle</p>
-        <p class="Barlow400">Hiroshima</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Himeji Castle</p>
+          <p class="Barlow400">Hiroshima</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Byodoin</p>
-        <p class="Barlow400">Uji</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Byodoin</p>
+          <p class="Barlow400">Uji</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Arashima Bamboo Forest</p>
-        <p class="Barlow400">Kyoto</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Arashima Bamboo Forest</p>
+          <p class="Barlow400">Kyoto</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Nachi-San</p>
-        <p class="Barlow400">Wakayama</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Nachi-San</p>
+          <p class="Barlow400">Wakayama</p>
+        </div>
       </div>
       <div>
-        <p class="Barlow700">Torii Gate</p>
-        <p class="Barlow400">Hakone</p>
+        <div class="destination_legend">
+          <p class="Barlow700">Torii Gate</p>
+          <p class="Barlow400">Hakone</p>
+        </div>
       </div>
     </div>
-    <button>View More</button>
+    <button class="viewMore Barlow700">View More</button>
+  </section>
+
+  <!-- SECTION 4 WE take care -->
+  <section class="sectionOption">
+    <h4 class="Barlow700">We Take Care Of Everything</h4>
+    <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor I</p>
+    <div class="optionContainer">
+      <div>
+        <p class="plane"></p>
+        <p class="Barlow700">Plane Ticket</p>
+        <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt
+          Ut </p>
+      </div>
+      <div>
+        <p class="hotel"></p>
+        <p class="Barlow700">Hotel Reservation</p>
+        <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt
+          Ut </p>
+      </div>
+      <div>
+        <p class="lowCost"></p>
+        <p class="Barlow700">Low Cost</p>
+        <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt
+          Ut </p>
+      </div>
+    </div>
+  </section>
+  <!-- /////////////////// -->
+  <section class="emailSub">
+    <h5 class="Barlow700">Try To Win A Free Trip</h5>
+    <p class="Barlow400">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor I</p>
+    <form action="" method="post" id="main_form">
+      <input type="email" name="email" id="email" class="Barlow400" placeholder="Your Email" autocomplete="email" required>
+    </form>
+    <button class="Barlow700" onclick="submit();">Try To Win</button>
   </section>
 
   <footer>

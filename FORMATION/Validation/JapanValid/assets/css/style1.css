@@ -63,7 +63,7 @@ header {
   justify-content: center;
   align-items: center;
   margin: 0 13.5%;
-
+  text-wrap: nowrap;
 }
 
 .navigation>div:nth-of-type(1) {
@@ -95,6 +95,11 @@ header {
   color: var(--secondaryColor);
   font-size: 1.8rem;
   line-height: 2.16rem;
+  transition: all 400ms ease;
+}
+
+.nav_menu>a:hover {
+  color: var(--primaryColor);
 }
 
 /* ///////////////////FIN HEADER//////////////////////////// */
@@ -203,7 +208,8 @@ header {
   padding: 1.5rem 3.2rem;
   border-radius: 3px;
 }
-.tripList_Container>div a:hover{
+
+.tripList_Container>div a:hover {
   background-color: var(--activeButtonColor);
 }
 
@@ -224,25 +230,296 @@ header {
 }
 
 /* SECTION 3 DESTINATION////////////////////////////// */
-.destination{
+.destination {
   text-align: center;
   padding: 10rem 0;
 }
-.destination>h3{
+
+.destination>h3 {
   font-size: 5.6rem;
   line-height: 5.8rem;
   color: var(--secondaryColor);
 }
-.destination>p{
+
+.destination>p {
   font-size: 2rem;
   line-height: 3rem;
   color: var(--secondaryColor);
 }
-.destination_box{
+
+.destination_box {
   margin-top: 8rem;
   margin-bottom: 9rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.destination_box>div {
+  flex: 1 1 25%;
+  height: 48rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+}
+
+.destination_legend {
+  color: #fff;
+  background-color: #00000099;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  padding: 1.6rem;
+}
+
+.destination_legend>p:nth-of-type(1) {
+  text-transform: uppercase;
+}
+
+.destination_box>div:nth-of-type(1) {
+  background-image: url(../img/meguro-river.jpg);
+}
+
+.destination_box>div:nth-of-type(2) {
+  background-image: url(../img/Kinkaku-ji.jpg);
+}
+
+.destination_box>div:nth-of-type(3) {
+  background-image: url(../img/Fushimi-Inari.jpg);
+}
+
+.destination_box>div:nth-of-type(4) {
+  background-image: url(../img/Himeji-Castle.jpg);
+}
+
+.destination_box>div:nth-of-type(5) {
+  background-image: url(../img/Byodoin.jpg);
+}
+
+.destination_box>div:nth-of-type(6) {
+  background-image: url(../img/Arashiyama-Bamboo-Forest.jpg);
+}
+
+.destination_box>div:nth-of-type(7) {
+  background-image: url(../img/Nachi-san.jpg);
+}
+
+.destination_box>div:nth-of-type(8) {
+  background-image: url(../img/torii-gate.jpg);
+}
+
+.viewMore {
+  color: #fff;
+  background-color: var(--primaryColor);
+  font-size: 2rem;
+  line-height: 3rem;
+  border: 1px none;
+  border-radius: 3px;
+  padding: 1.5rem 3.2rem;
+  transition: all 400ms ease;
+}
+
+.viewMore:hover {
+  background-color: var(--activeButtonColor);
+}
+
+
+/* SECTION 4 EVERY option */
+.sectionOption {
+  text-align: center;
+  padding: 10rem 13.5%;
+}
+
+.sectionOption>h4 {
+  font-size: 5.6rem;
+  line-height: 5.8rem;
+  color: var(--secondaryColor);
+
+}
+
+.sectionOption>p {
+  font-size: 2rem;
+  line-height: 3rem;
+  color: var(--secondaryColor);
+  margin-bottom: 8rem;
+}
+
+.optionContainer {
+  display: flex;
+  flex-direction: row;
+  color: var(--secondaryColor);
+}
+
+.optionContainer>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.optionContainer>div>p {
+  min-height: 5rem;
+  min-width: 5.5rem;
+}
+
+.plane {
+  background-image: url(../img/Vector.svg);
+  background-repeat: no-repeat;
+}
+
+.hotel {
+  background-image: url(../img/Vector\ \(1\).svg);
+  background-repeat: no-repeat;
+}
+
+.lowCost {
+  background-image: url(../img/Vector\ \(2\).svg);
+  background-repeat: no-repeat;
+}
+
+.optionContainer>div>p:nth-of-type(2) {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+.optionContainer>div>p:nth-of-type(3) {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+/* /////////////////FIN  */
+
+/* SECTION EMAIL */
+.emailSub {
+  text-align: center;
+  padding: 10rem 0;
+}
+
+.emailSub>h5 {
+  color: var(--secondaryColor);
+  font-size: 5.6rem;
+  line-height: 5.8rem;
+}
+
+.emailSub>p {
+  color: var(--secondaryColor);
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+}
+
+.emailSub>button {
+  color: #fff;
+  background-color: var(--primaryColor);
+  font-size: 2rem;
+  line-height: 3rem;
+  border: 1px none;
+  border-radius: 3px;
+  padding: 1.5rem 3.2rem;
+  transition: all 400ms ease;
+}
+
+.emailSub>button:hover {
+  background-color: var(--activeButtonColor);
+
+}
+
+#main_form {
+  display: inline;
+}
+
+#email {
+  min-width: 22.5%;
+  background-color: #e9ebed;
+  color: #4d5d68;
+  font-size: 2rem;
+  line-height: 3rem;
+  outline: none;
+  border: 1px none;
+  border-radius: 3px;
+  margin-right: 4rem;
+  padding: 1.5rem 1.6rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #fff;
+  background-color: #213442;
+  padding: 3.3rem;
+}
+
+@media screen and (max-width:1205px) {
+  html {
+    font-size: 50%;
+  }
+
+  .plane {
+    background-size: cover;
+    overflow: visible;
+  }
+
+  .hotel {
+    background-size: cover;
+    overflow: visible;
+  }
+
+  .lowCost {
+    background-size: cover;
+    overflow: visible;
+  }
+}
+
+@media screen and (max-width:960px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media screen and (max-width:870px) {
+  html {
+    font-size: 40%;
+  }
+}
+@media screen and (max-width:700px) {
+  .heroBanner{
+    padding: 15vh 10%;
+    min-height: 50vh;
+    background-position: center;
+  }
+  .heroBanner>div{
+    margin: auto 0;
+  }
+}
+
+@media screen and (max-width:600px) {
+  html {
+    font-size: 30%;
+  }
+
+  .destination_box>div {
+    flex: 1 1 50%;
+  }
+
+  .tripList_Container>div {
+    flex: 1 1 100%;
+  }
+  .tripList_Container>div a{
+    width: 50%;
+    height: 15%;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width:385px) {
+  html {
+    font-size: 25%;
+  }
 }
