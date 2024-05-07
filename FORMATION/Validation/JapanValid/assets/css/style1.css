@@ -109,7 +109,7 @@ header {
 .heroBanner {
   background-image: url(../img/hero-bkg\ 1.jpg);
   background-repeat: no-repeat;
-  object-fit: cover;
+  background-size: cover;
   min-height: 100vh;
   padding: 35vh 30%;
 
@@ -190,6 +190,7 @@ header {
   align-items: end;
   gap: 1.6rem;
   padding: 3.2rem;
+  background-size: cover;
 }
 
 .tripList_Container>div p {
@@ -262,7 +263,8 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: end;
-
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .destination_legend {
@@ -279,6 +281,7 @@ header {
 
 .destination_box>div:nth-of-type(1) {
   background-image: url(../img/meguro-river.jpg);
+  
 }
 
 .destination_box>div:nth-of-type(2) {
@@ -485,13 +488,15 @@ footer {
     font-size: 40%;
   }
 }
+
 @media screen and (max-width:700px) {
-  .heroBanner{
+  .heroBanner {
     padding: 15vh 10%;
     min-height: 50vh;
     background-position: center;
   }
-  .heroBanner>div{
+
+  .heroBanner>div {
     margin: auto 0;
   }
 }
@@ -505,10 +510,15 @@ footer {
     flex: 1 1 50%;
   }
 
+  .tripList_Container {
+    gap: 2rem;
+  }
+
   .tripList_Container>div {
     flex: 1 1 100%;
   }
-  .tripList_Container>div a{
+
+  .tripList_Container>div a {
     width: 50%;
     height: 15%;
     font-size: 4rem;
