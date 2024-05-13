@@ -29,17 +29,19 @@ h1 {
     text-align: center;
 }
 
+/* c'est le container qui fait 900px en fait lmao */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    /* height: 900px;  */
+    margin: 0 auto;
 }
 
 .wrapper {
     display: grid;
-    grid-template: repeat(4, 200px)/repeat(4, 200px);
+    width: 900px;
+    grid-template: repeat(4, 225px)/repeat(4, 1fr);
     gap: 10px;
+    margin: 0 auto;
 }
 
 .wrapper img {
@@ -123,4 +125,23 @@ h1 {
     grid-row: span 1;
     grid-column: span 1;
     order: 4;
+}
+
+@media screen and (max-width:1000px){
+    .wrapper {
+        width: 600px;
+        grid-template: repeat(4, 150px)/repeat(4, 1fr);
+    }
+}
+@media screen and (max-width:700px){
+    .wrapper {
+        width: 400px;
+        grid-template: repeat(4, 100px)/repeat(4, 1fr);
+    }
+}
+@media screen and (max-width:450px){
+    .wrapper {
+        width: 200px;
+        grid-template: repeat(4, 50px)/repeat(4, 1fr);
+    }
 }
