@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --text-color: #a8a8a8;
+    --grid-background: #555555;
+    --grid-cell-background-color: rgb(146, 0, 0);
+    --grid-cell-hover-color: rgb(196, 1, 1);
+    --grid-cell-border-color: rgb(207, 4, 4);
+    --grid-cell-border-colordark: rgb(104, 0, 0);
+}
+
+/* body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: grid;
+    grid-template: repeat(4, 200px)/repeat(4, 200px);
+    gap: 10px;
+}
+
+.wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.wrapper>p {
+    background-color: lightgreen;
+    overflow: hidden;
+}
+
+.wrapper>p:nth-of-type(1) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 1;
+}
+
+.wrapper>p:nth-of-type(2) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 3;
+}
+
+.wrapper>div:nth-of-type(1) {
+    grid-row: span 1;
+    grid-column: span 2;
+    order: 0;
+}
+
+.wrapper>div:nth-of-type(2) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 0;
+}
+
+.wrapper>div:nth-of-type(3) {
+    grid-row: span 2;
+    grid-column: span 1;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(4) {
+    grid-row: span 1;
+    grid-column: span 2;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(5) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(6) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(7) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(8) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 2;
+}
+
+.wrapper>div:nth-of-type(9) {
+    grid-row: span 1;
+    grid-column: span 2;
+    order: 4;
+}
+
+.wrapper>div:nth-of-type(10) {
+    grid-row: span 1;
+    grid-column: span 1;
+    order: 4;
+}
