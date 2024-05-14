@@ -66,11 +66,11 @@ body {
 }
 
 h1 {
-    font-size: clamp(1rem, 5vw, 6.4rem);
+    font-size: clamp(1rem, 5vw, 12rem);
     font-family: sans-serif;
     font-weight: 800;
     letter-spacing: -2px;
-    line-height: 6rem;
+    line-height: 9rem;
 }
 
 p {
