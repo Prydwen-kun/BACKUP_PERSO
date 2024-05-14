@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --text-color: #ccc;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #171717;
+    padding: 0 10%;
+}
+
+h1 {
+    font-size: 3.2rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+.grid_wrapper {
+    display: grid;
+    grid-template: 1fr 1fr/1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.grid_wrapper>div {
+    background-color: #333333;
+    color: var(--text-color);
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 2rem;
+}
+
+.grid_wrapper>div img {
+    max-width:clamp(10px,8vw,160px); /*Rajouter une unité dynamique pour que clamp fonctionne*/
+}
