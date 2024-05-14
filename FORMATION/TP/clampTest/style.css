@@ -9,36 +9,42 @@ html {
 
 body {
     background-color: rgb(212, 227, 233);
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden; */
 }
 
 /* :root {} */
-h1{
-    font-size: 6.4rem;
+h1 {
+    font-size: clamp(10px, 6vw, 6.4rem);
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: -2px;
+    text-align: center;
 }
+
 .container {
     display: grid;
+    position: relative;
+    left: -40px;
     width: 100%;
-    grid-template: repeat(4, clamp(1px,100px,400px))/repeat(4, 1fr);
-    gap: clamp(0.1px, 10px, 20px);
-    transform: rotate(-30deg);
+    grid-template: repeat(4, clamp(1px, 20vw, 25vh))/repeat(4, 1fr);
+    gap: clamp(0.1px, 0.5vw, 20px);
+    transform: rotate(-25deg);
+
 }
 
 .MegaP {
     color: white;
     background-color: rgb(138, 0, 0);
-    font-size: clamp(0.1rem, 1rem, 2rem);
+    font-size: clamp(0.1rem, 2.5vw, 5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: clamp(10px, 100px, 400px);
-    height: clamp(10px, 100px, 400px);
+    width: clamp(10px, 20vw, 400px);
+    height: clamp(10px, 20vw, 400px);
     border: 3px solid rgb(190, 0, 0);
     box-shadow: 4px 4px 30px rgb(68, 68, 68);
     border-radius: 50%;
