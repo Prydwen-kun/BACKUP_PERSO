@@ -11,7 +11,8 @@ html {
     --main-color: #888;
     --backdrop-color: rgb(255, 205, 213);
 }
-body{
+
+body {
     background-color: var(--backdrop-color);
 }
 
@@ -31,14 +32,15 @@ header {
     justify-content: center;
     align-items: center;
     height: 5vh;
-    
+
     padding: 2%;
 }
 
 .navItem {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.logo{
+
+.logo {
     flex: 1 1 auto;
     font-size: 24px;
     text-wrap: nowrap;
@@ -48,6 +50,7 @@ header {
     letter-spacing: 5px;
     -webkit-text-stroke: 1px red;
 }
+
 .navMenu {
     flex: 1 1 auto;
     font-size: 32px;
@@ -155,6 +158,33 @@ header {
     margin: 0 auto;
 }
 
+/* BRAND */
+.brand-container {
+    height: 18vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--main-color);
+    border: 2px solid black;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+}
+
+.brand-container>a {
+    /* flex: 1 1 auto; */
+    display: block;
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.brand-container>a>img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
 
 /* FOOTER */
 footer {
