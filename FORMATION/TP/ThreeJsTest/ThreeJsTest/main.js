@@ -1,18 +1,23 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+import * as PLAYER from './player.js'
 
 import * as THREE from './three.js-master/build/three.module.js';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+scene.background = new THREE.Color(0xfa6f66);
+scene.fog = new THREE.Fog(0xbbbbbb, 10, 500);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
-document.body.appendChild(renderer.domElement);
+document.getElementById("game_container").appendChild(renderer.domElement);
+
+//CLOCK
+let clock = new THREE.Clock();
 
 // ROTATING CUBE
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -24,13 +29,14 @@ scene.add(cube);
 cube.position.y = 1.5;
 
 // FLOOR
-const geometry2 = new THREE.BoxGeometry(10, 10, 0.1);
+const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
 const floor = new THREE.Mesh(geometry2, material2);
 
 floor.receiveShadow = true;
 scene.add(floor);
-floor.rotation.x = 90;
+floor.rotation.x = 1.5708;
+floor.position.y = -0.1;
 
 //AMBIENT LIGHT
 const light = new THREE.AmbientLight(0xcccccc); // soft white light
@@ -52,20 +58,52 @@ scene.add(helper);
 
 //camera position
 camera.position.z = 5;
+camera.position.y = 2;
+
+//PLAYER
+let player1 = new PLAYER.player("P1", camera, renderer.domElement);
+
+// EVENT LISTENERS AND PAUSE MENU
+const blocker = document.getElementById('blocker');
+const instructions = document.getElementById('instructions');
+
+instructions.addEventListener('click', function () {
+
+  player1.getPlayerControls().lock();
+
+});
+
+player1.getPlayerControls().addEventListener('lock', function () {
+
+  instructions.style.display = 'none';
+  blocker.style.display = 'none';
+
+});
+
+player1.getPlayerControls().addEventListener('unlock', function () {
+
+  blocker.style.display = 'block';
+  instructions.style.display = '';
+
+});
+
+scene.add(player1.getPlayerControls().getObject());
+
 
 function updatePlay() {
   requestAnimationFrame(updatePlay);
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
-
+  player1.update(clock.getDelta());
+  // camera.position = player1.getPlayerDirection();
   renderer.render(scene, camera);
 }
 updatePlay();
 
 
 
-
+//exemple de rajout html
 document.querySelector('#app').innerHTML = `
   <nav class="nav_menu">
     <h1><a href="index.html">App Logo</a></h1>
@@ -74,5 +112,3 @@ document.querySelector('#app').innerHTML = `
     <a href="#">Doc</a>
   </nav>
 `
-
-setupCounter(document.querySelector('#counter'))
