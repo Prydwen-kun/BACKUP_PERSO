@@ -21,13 +21,22 @@ let clock = new THREE.Clock();
 
 // ROTATING CUBE
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshLambertMaterial({ color: 0xcccccc });
+const material = new THREE.MeshLambertMaterial({ color: 0xcccc00 });
 const cube = new THREE.Mesh(geometry, material);
 cube.castShadow = true;
 cube.receiveShadow = false;
 scene.add(cube);
 cube.position.y = 1.5;
 
+//WALL
+const geometry1 = new THREE.BoxGeometry(100, 40, 1);
+const material1 = new THREE.MeshLambertMaterial({ color: 0x2200dd });
+const cube1 = new THREE.Mesh(geometry1, material1);
+cube1.castShadow = true;
+cube1.receiveShadow = true;
+scene.add(cube1);
+cube1.position.y = 0.5;
+cube1.position.z = -40;
 // FLOOR
 const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
@@ -61,7 +70,7 @@ camera.position.z = 5;
 camera.position.y = 2;
 
 //PLAYER
-let player1 = new PLAYER.player("P1", camera, renderer.domElement);
+let player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
@@ -89,18 +98,25 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 
 scene.add(player1.getPlayerControls().getObject());
 
-
+/////////////////////////////APP MAIN LOOP/////////////////////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   player1.update(clock.getDelta());
-  // camera.position = player1.getPlayerDirection();
+
+
+
+
   renderer.render(scene, camera);
 }
 updatePlay();
-
+onresize = (event) => {
+  renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+  camera.aspect(window.innerWidth / window.innerHeight);
+};
+////////////////////////////APP MAIN LOOP/////////////////////////////////
 
 
 //exemple de rajout html
