@@ -16,7 +16,8 @@ class player {
     //position and speed
     this.velocity = 3;
     this.direction = new THREE.Vector3(0, 0, 1);
-
+    //Keymap
+    this.keymap = {};
   }
 
   //getter
@@ -38,32 +39,49 @@ class player {
   }
 
 
-  //update and managing inputs
+
+
+  //UPDATE PLAYER
   update(delta) {
-    let _that = this;
-    let keyMap = [];
+
+    //EVENT WATCH
+
     onkeydown = (event) => {
-      switch (event.code) {
-        case "KeyW":
-          _that.controls.moveForward(_that.velocity * delta);
-          break;
-        case "KeyS":
-          _that.controls.moveForward(_that.velocity * delta * -1);
-          break;
-        case "KeyA":
-          _that.controls.moveRight(_that.velocity * delta * -1);
-          break;
-        case "KeyD":
-          _that.controls.moveRight(_that.velocity * delta);
-          break;
-      }
-      console.log(`Update Called **debug** : ${event.code}`);
+      let _that = this;
+      let keyCode = event.code;
+      _that.keymap[keyCode] = true;
+
+      console.log(keyCode);
     }
 
     onkeyup = (event) => {
-      
-    }
-  }
+      let _that = this;
+      let keyCode = event.code;
+      _that.keymap[keyCode] = false;
 
+    }
+
+
+
+
+    //UP
+    if (this.keymap["KeyW"] == true) {
+      this.controls.moveForward(this.velocity * delta);
+    }
+    //DOWN
+    if (this.keymap["KeyS"] == true) {
+      this.controls.moveForward(this.velocity * delta * -1);
+    }
+    //LEFT
+    if (this.keymap["KeyA"] == true) {
+      this.controls.moveRight(this.velocity * delta * -1);
+    }
+    //RIGHT
+    if (this.keymap["KeyD"] == true) {
+      this.controls.moveRight(this.velocity * delta);
+
+    }
+
+  }
 }
 export { player };
