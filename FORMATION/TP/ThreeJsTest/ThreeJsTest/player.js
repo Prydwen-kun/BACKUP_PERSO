@@ -49,17 +49,17 @@ class player {
     //EVENT WATCH
 
     onkeydown = (event) => {
-      let _that = this;
+      //let _that = this;
       let keyCode = event.code;
-      _that.keymap[keyCode] = true;
+      this.keymap[keyCode] = true;
 
       console.log(keyCode);
     }
 
     onkeyup = (event) => {
-      let _that = this;
+      //let _that = this;
       let keyCode = event.code;
-      _that.keymap[keyCode] = false;
+      this.keymap[keyCode] = false;
 
     }
 

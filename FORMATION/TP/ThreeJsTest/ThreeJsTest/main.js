@@ -53,12 +53,16 @@ scene.add(light);
 
 // LIGHT DIRECTIONAL
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 10, 100);
+directionalLight.position.set(0, 20, 100);
 directionalLight.castShadow = true;
-directionalLight.shadow.mapSize.width = 512;
-directionalLight.shadow.mapSize.height = 512;
+directionalLight.shadow.mapSize.width = 2048;
+directionalLight.shadow.mapSize.height = 2048;
 directionalLight.shadow.camera.near = 0.5;
 directionalLight.shadow.camera.far = 500;
+directionalLight.shadow.camera.top = 60;
+directionalLight.shadow.camera.bottom = -60;
+directionalLight.shadow.camera.left = -60;
+directionalLight.shadow.camera.right = 60;
 scene.add(directionalLight);
 directionalLight.target = cube1; //wall
 scene.add(directionalLight.target);
@@ -79,7 +83,8 @@ let player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 //ENNEMIES
 let mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40));
 scene.add(mob1.mesh);
-
+let mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40));
+scene.add(mob2.mesh);
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
 const instructions = document.getElementById('instructions');
