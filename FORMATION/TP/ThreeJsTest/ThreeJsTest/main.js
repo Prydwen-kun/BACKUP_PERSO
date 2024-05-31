@@ -117,8 +117,8 @@ onresize = (event) => {
   camera.aspect(window.innerWidth / window.innerHeight);
 };
 ////////////////////////////APP MAIN LOOP/////////////////////////////////
-
-
+//vite cmd : npx vite // ps -a | grep vite // npx kill-port x173
+//
 //exemple de rajout html
 document.querySelector('#app').innerHTML = `
   <nav class="nav_menu">
