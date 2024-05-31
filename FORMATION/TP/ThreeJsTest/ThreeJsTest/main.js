@@ -2,7 +2,7 @@ import './style.css'
 // import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 import * as PLAYER from './player.js'
-
+import * as MOBS from './ClassModules/mobs.js'
 import * as THREE from './three.js-master/build/three.module.js';
 
 const scene = new THREE.Scene();
@@ -30,13 +30,13 @@ cube.position.y = 1.5;
 
 //WALL
 const geometry1 = new THREE.BoxGeometry(100, 40, 1);
-const material1 = new THREE.MeshLambertMaterial({ color: 0x2200dd });
+const material1 = new THREE.MeshLambertMaterial({ color: 0x00aaee });
 const cube1 = new THREE.Mesh(geometry1, material1);
 cube1.castShadow = true;
 cube1.receiveShadow = true;
 scene.add(cube1);
 cube1.position.y = 0.5;
-cube1.position.z = -40;
+cube1.position.z = -50;
 // FLOOR
 const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
@@ -53,24 +53,32 @@ scene.add(light);
 
 // LIGHT DIRECTIONAL
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 10, 0);
+directionalLight.position.set(0, 10, 100);
 directionalLight.castShadow = true;
 directionalLight.shadow.mapSize.width = 512;
 directionalLight.shadow.mapSize.height = 512;
 directionalLight.shadow.camera.near = 0.5;
 directionalLight.shadow.camera.far = 500;
 scene.add(directionalLight);
-
+directionalLight.target = cube1; //wall
+scene.add(directionalLight.target);
+const helperLight = new THREE.DirectionalLightHelper(directionalLight, 5);
+scene.add(helperLight);
+directionalLight.target.updateMatrixWorld();
 //helper
 const helper = new THREE.CameraHelper(directionalLight.shadow.camera);
 scene.add(helper);
 
 //camera position
 camera.position.z = 5;
-camera.position.y = 2;
+camera.position.y = 1.5;
 
 //PLAYER
 let player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
+
+//ENNEMIES
+let mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40));
+scene.add(mob1.mesh);
 
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
@@ -105,7 +113,7 @@ function updatePlay() {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   player1.update(clock.getDelta());
-
+  mob1.update(player1.camera.position);
 
 
 

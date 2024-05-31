@@ -38,7 +38,9 @@ class player {
     this.velocity = velocity;
   }
 
-
+  takeDamage(damage) {
+    this.health -= damage;
+  }
 
 
   //UPDATE PLAYER
@@ -60,9 +62,6 @@ class player {
       _that.keymap[keyCode] = false;
 
     }
-
-
-
 
     //UP
     if (this.keymap["KeyW"] == true) {
