@@ -4,7 +4,10 @@ import './style.css'
 import * as PLAYER from './player.js'
 import * as MOBS from './ClassModules/mobs.js'
 import * as THREE from './three.js-master/build/three.module.js';
+import * as MAP from './ClassModules/map.js';
 
+
+//INIT SCENE AND CAMERA
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
 scene.background = new THREE.Color(0xfa6f66);
@@ -20,7 +23,10 @@ document.getElementById("game_container").appendChild(renderer.domElement);
 const loader = new THREE.TextureLoader();
 
 //CLOCK
-let clock = new THREE.Clock();
+const clock = new THREE.Clock();
+
+//INIT MAP
+const map1 = new MAP.map(scene,loader);
 
 // ROTATING CUBE
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -42,8 +48,8 @@ cube1.receiveShadow = true;
 scene.add(cube1);
 cube1.position.y = 0.5;
 cube1.position.z = -50;
-// FLOOR
 
+// FLOOR
 const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
 const textureFloor = loader.load('/images.jpg');
@@ -76,6 +82,7 @@ scene.add(directionalLight.target);
 const helperLight = new THREE.DirectionalLightHelper(directionalLight, 5);
 scene.add(helperLight);
 directionalLight.target.updateMatrixWorld();
+
 //helper
 const helper = new THREE.CameraHelper(directionalLight.shadow.camera);
 scene.add(helper);
@@ -85,12 +92,12 @@ camera.position.z = 5;
 camera.position.y = 1.5;
 
 //PLAYER
-let player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
+const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 //ENNEMIES
-let mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40));
+const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40));
 scene.add(mob1.mesh);
-let mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40));
+const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40));
 scene.add(mob2.mesh);
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
@@ -118,7 +125,7 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 
 scene.add(player1.getPlayerControls().getObject());
 
-/////////////////////////////APP MAIN LOOP/////////////////////////////
+//////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
 
@@ -136,9 +143,8 @@ onresize = (event) => {
   renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
   camera.aspect(window.innerWidth / window.innerHeight);
 };
-////////////////////////////APP MAIN LOOP/////////////////////////////////
-//vite cmd : npx vite // ps -a | grep vite // npx kill-port x173
-//
+//////////APP MAIN LOOP////////////
+
 //exemple de rajout html
 document.querySelector('#app').innerHTML = `
   <nav class="nav_menu">
