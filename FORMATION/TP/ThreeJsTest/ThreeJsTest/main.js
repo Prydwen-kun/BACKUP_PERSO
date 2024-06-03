@@ -16,6 +16,9 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
 document.getElementById("game_container").appendChild(renderer.domElement);
 
+//TEXTURE LOADER
+const loader = new THREE.TextureLoader();
+
 //CLOCK
 let clock = new THREE.Clock();
 
@@ -31,17 +34,21 @@ cube.position.y = 1.5;
 //WALL
 const geometry1 = new THREE.BoxGeometry(100, 40, 1);
 const material1 = new THREE.MeshLambertMaterial({ color: 0x00aaee });
-const cube1 = new THREE.Mesh(geometry1, material1);
+const textureWall = loader.load('/oldWood.avif');
+const materialWall = new THREE.MeshLambertMaterial({ map: textureWall });
+const cube1 = new THREE.Mesh(geometry1, materialWall);
 cube1.castShadow = true;
 cube1.receiveShadow = true;
 scene.add(cube1);
 cube1.position.y = 0.5;
 cube1.position.z = -50;
 // FLOOR
+
 const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
-const floor = new THREE.Mesh(geometry2, material2);
-
+const textureFloor = loader.load('/images.jpg');
+const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
+const floor = new THREE.Mesh(geometry2, materialFloor);
 floor.receiveShadow = true;
 scene.add(floor);
 floor.rotation.x = 1.5708;
