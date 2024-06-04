@@ -11,13 +11,15 @@ class mobs {
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
         this.texture = loader.load('/herobrine.png');
         this.material1 = new THREE.MeshLambertMaterial({ map: this.texture });
-        this.mesh = new THREE.Mesh(this.geometry, this.material1);
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = false;
 
         this.mesh.position.x = spawnPosition.x;
         this.mesh.position.y = spawnPosition.y;
         this.mesh.position.z = spawnPosition.z;
+
+        this.target = new THREE.Vector3(0, 0, 0);
 
     }
 
@@ -29,10 +31,12 @@ class mobs {
         scene.add(this.mesh);
     }
 
-    update(playerPosition, deltaTime) {  //playerPosition est un vector3
-        this.mesh.lookAt(playerPosition);
-        // this.mesh.translateOnAxis();
-        //this.mesh.position + movement * DeltaTime at playerAngle
+    update(playerPosition, deltaTime) {
+        this.target.set(playerPosition.x, 0.5, playerPosition.z);
+        this.mesh.lookAt(this.target);
+        this.target.normalize();
+        this.mesh.translateOnAxis(this.target, this.velocity * deltaTime);
+        //need to update the world matrix to update dynamic shadow
     }
 
 }

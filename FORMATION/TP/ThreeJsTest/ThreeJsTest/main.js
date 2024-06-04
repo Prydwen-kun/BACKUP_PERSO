@@ -36,6 +36,7 @@ cube.castShadow = true;
 cube.receiveShadow = false;
 scene.add(cube);
 cube.position.y = 1.5;
+cube.position.x = -20;
 
 //WALL
 const geometry1 = new THREE.BoxGeometry(100, 40, 1);
@@ -95,9 +96,9 @@ camera.position.y = 1.5;
 const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 //ENNEMIES
-const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40), loader);
+const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 1, -40), loader);
 mob1.addToScene(scene);
-const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40), loader);
+const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 1, -40), loader);
 mob2.addToScene(scene);
 
 // EVENT LISTENERS AND PAUSE MENU
@@ -133,8 +134,8 @@ function updatePlay() {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   player1.update(clock.getDelta());
-  mob1.update(player1.camera.position);
-  mob2.update(player1.camera.position);
+  mob1.update(player1.camera.position, clock.getDelta());
+  mob2.update(player1.camera.position, clock.getDelta());
 
 
   renderer.render(scene, camera);

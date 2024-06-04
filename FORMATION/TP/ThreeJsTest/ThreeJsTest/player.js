@@ -14,7 +14,7 @@ class player {
     this.stamina = 100;
 
     //position and speed
-    this.velocity = 3;
+    this.velocity = 10;
     this.direction = new THREE.Vector3(0, 0, 1);
     //Keymap
     this.keymap = {};
