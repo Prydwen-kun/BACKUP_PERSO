@@ -1,7 +1,7 @@
 import * as THREE from '..//three.js-master/build/three.module.js';
 
 class mobs {
-    constructor(Id, health, velocity, spawnPosition) {
+    constructor(Id, health, velocity, spawnPosition, loader) {
         this.Id = Id;
         this.health = health; //100
         this.velocity = velocity; //2.90
@@ -9,7 +9,9 @@ class mobs {
 
         this.geometry = new THREE.BoxGeometry(1, 2, 1);
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
-        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.texture = loader.load('/herobrine.png');
+        this.material1 = new THREE.MeshLambertMaterial({ map: this.texture });
+        this.mesh = new THREE.Mesh(this.geometry, this.material1);
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = false;
 
@@ -23,8 +25,14 @@ class mobs {
         this.health -= damage;
     }
 
-    update(playerPosition) {  //playerPosition est un vector3
+    addToScene(scene) {
+        scene.add(this.mesh);
+    }
 
+    update(playerPosition, deltaTime) {  //playerPosition est un vector3
+        this.mesh.lookAt(playerPosition);
+        // this.mesh.translateOnAxis();
+        //this.mesh.position + movement * DeltaTime at playerAngle
     }
 
 }

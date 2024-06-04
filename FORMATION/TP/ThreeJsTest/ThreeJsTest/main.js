@@ -26,7 +26,7 @@ const loader = new THREE.TextureLoader();
 const clock = new THREE.Clock();
 
 //INIT MAP
-const map1 = new MAP.map(scene,loader);
+const map1 = new MAP.map(scene, loader);
 
 // ROTATING CUBE
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -95,10 +95,11 @@ camera.position.y = 1.5;
 const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 //ENNEMIES
-const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40));
-scene.add(mob1.mesh);
-const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40));
-scene.add(mob2.mesh);
+const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 0.5, -40), loader);
+mob1.addToScene(scene);
+const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 0.5, -40), loader);
+mob2.addToScene(scene);
+
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
 const instructions = document.getElementById('instructions');
@@ -133,7 +134,7 @@ function updatePlay() {
   cube.rotation.y += 0.01;
   player1.update(clock.getDelta());
   mob1.update(player1.camera.position);
-
+  mob2.update(player1.camera.position);
 
 
   renderer.render(scene, camera);

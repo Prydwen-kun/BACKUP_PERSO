@@ -18,7 +18,7 @@ class map {
         this.wall3 = new CUBE.cube(100, 40, 1, loader, 50, 0.5, 0);
         this.wall3.rotate(0, 1.5708, 0);
         this.wall3.addToScene(scene);
-
+        
 
     }
 
