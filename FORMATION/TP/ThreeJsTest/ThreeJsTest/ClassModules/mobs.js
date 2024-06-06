@@ -9,7 +9,7 @@ class mobs {
 
         this.geometry = new THREE.BoxGeometry(1, 2, 1);
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
-        this.texture = loader.load('/herobrine.png');
+        this.texture = loader.load('/herobrine.png');//need to wrap an eventual texture with wrapT // UV pos
         this.material1 = new THREE.MeshLambertMaterial({ map: this.texture });
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.castShadow = true;
