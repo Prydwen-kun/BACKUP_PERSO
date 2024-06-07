@@ -12,7 +12,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
 scene.background = new THREE.Color(0xfa6f66);
 scene.fog = new THREE.Fog(0xbbbbbb, 10, 500);
-
+scene.updateWorldMatrix(true,true);
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -67,7 +67,7 @@ scene.add(light);
 
 // LIGHT DIRECTIONAL
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 20, 100);
+directionalLight.position.set(0, 50, 60);
 directionalLight.castShadow = true;
 directionalLight.shadow.mapSize.width = 2048;
 directionalLight.shadow.mapSize.height = 2048;

@@ -5,7 +5,6 @@ class mobs {
         this.Id = Id;
         this.health = health; //100
         this.velocity = velocity; //2.90
-        this.spawnPosition = spawnPosition; //new THREE.Vector3(0,1,40);
 
         this.geometry = new THREE.BoxGeometry(1, 2, 1);
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
@@ -14,10 +13,7 @@ class mobs {
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = false;
-
-        this.mesh.position.x = spawnPosition.x;
-        this.mesh.position.y = spawnPosition.y;
-        this.mesh.position.z = spawnPosition.z;
+        this.mesh.position.set(spawnPosition.x,spawnPosition.y,spawnPosition.z);
 
         this.target = new THREE.Vector3(0, 0, 0);
 
@@ -32,11 +28,18 @@ class mobs {
     }
 
     update(playerPosition, deltaTime) {
-        this.target.set(playerPosition.x, 0.5, playerPosition.z);
+
+        this.target.set(playerPosition.x, playerPosition.y - 0.5, playerPosition.z);
         this.mesh.lookAt(this.target);
         this.target.normalize();
-        this.mesh.translateOnAxis(this.target, this.velocity * deltaTime);
+        this.mesh.position.set(this.target.x * this.velocity * deltaTime, this.mesh.position.y, this.target.z * this.velocity * deltaTime);
+
+        //get quaternion rotation ?
+        // console.log('This target :',this.target,'This mesh : ',this.mesh.position,'This velocity : ',this.velocity,'Delta Time :',deltaTime);
+
+        // this.mesh.translateOnAxis(this.target, this.velocity * deltaTime);
         //need to update the world matrix to update dynamic shadow
+
     }
 
 }
