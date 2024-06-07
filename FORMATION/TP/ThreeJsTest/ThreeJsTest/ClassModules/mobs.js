@@ -13,9 +13,9 @@ class mobs {
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = false;
-        this.mesh.position.set(spawnPosition.x,spawnPosition.y,spawnPosition.z);
+        this.mesh.position.set(spawnPosition.x, spawnPosition.y, spawnPosition.z);
 
-        this.target = new THREE.Vector3(0, 0, 0);
+        // this.target = new THREE.Vector3(0, 0, 0);
 
     }
 
@@ -28,17 +28,11 @@ class mobs {
     }
 
     update(playerPosition, deltaTime) {
-
-        this.target.set(playerPosition.x, playerPosition.y - 0.5, playerPosition.z);
-        this.mesh.lookAt(this.target);
-        this.target.normalize();
-        this.mesh.position.set(this.target.x * this.velocity * deltaTime, this.mesh.position.y, this.target.z * this.velocity * deltaTime);
-
-        //get quaternion rotation ?
-        // console.log('This target :',this.target,'This mesh : ',this.mesh.position,'This velocity : ',this.velocity,'Delta Time :',deltaTime);
-
-        // this.mesh.translateOnAxis(this.target, this.velocity * deltaTime);
-        //need to update the world matrix to update dynamic shadow
+        // let directionVecteur = playerPosition.clone().sub(this.mesh.position);
+        // directionVecteur.normalize();
+        // this.mesh.position.add(directionVecteur.multiplyScalar(this.velocity * deltaTime));
+        this.mesh.lookAt(playerPosition.x, 1, playerPosition.z);
+        this.mesh.position.lerp(playerPosition, this.velocity/1000);
 
     }
 
