@@ -32,7 +32,8 @@ class mobs {
         // directionVecteur.normalize();
         // this.mesh.position.add(directionVecteur.multiplyScalar(this.velocity * deltaTime));
         this.mesh.lookAt(playerPosition.x, 1, playerPosition.z);
-        this.mesh.position.lerp(playerPosition, this.velocity/1000);
+
+        this.mesh.position.lerp(playerPosition, 0.005);
 
     }
 
