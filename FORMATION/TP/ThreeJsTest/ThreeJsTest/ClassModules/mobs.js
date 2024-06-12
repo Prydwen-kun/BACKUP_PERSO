@@ -15,6 +15,11 @@ class mobs {
         this.mesh.receiveShadow = false;
         this.mesh.position.set(spawnPosition.x, spawnPosition.y, spawnPosition.z);
 
+
+
+        //POUR DEBUG
+        this.deltaSum = 0;
+        this.updateCall = 0;
         // this.target = new THREE.Vector3(0, 0, 0);
 
     }
@@ -28,13 +33,24 @@ class mobs {
     }
 
     update(playerPosition, deltaTime) {
-        // let directionVecteur = playerPosition.clone().sub(this.mesh.position);
-        // directionVecteur.normalize();
-        // this.mesh.position.add(directionVecteur.multiplyScalar(this.velocity * deltaTime));
+
         this.mesh.lookAt(playerPosition.x, 1, playerPosition.z);
+        let directionNormal = new THREE.Vector3(0, 0, 0);
+        this.mesh.getWorldDirection(directionNormal);
+        directionNormal.normalize();
 
-        this.mesh.position.lerp(playerPosition, 0.005);
+        this.mesh.translateOnAxis(directionNormal, this.velocity * deltaTime);
+        // this.mesh.position.lerp(playerPosition, 0.005);
 
+
+        //DEBUG UPDATE CALL NUMBER
+        this.deltaSum += deltaTime;
+        this.updateCall++;
+        if (this.deltaSum > 1) {
+            console.log('MOB',this.Id,'Update has been called : ', this.updateCall, ' times per second!');
+            this.deltaSum = 0;
+            this.updateCall = 0;
+        }
     }
 
 }

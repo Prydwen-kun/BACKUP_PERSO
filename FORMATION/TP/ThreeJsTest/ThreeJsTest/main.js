@@ -12,7 +12,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
 scene.background = new THREE.Color(0xfa6f66);
 scene.fog = new THREE.Fog(0xbbbbbb, 10, 500);
-scene.updateWorldMatrix(true,true);
+scene.updateWorldMatrix(true, true);
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -96,9 +96,9 @@ camera.position.y = 1.5;
 const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 //ENNEMIES
-const mob1 = new MOBS.mobs(1, 100, 2.90, new THREE.Vector3(0, 1, -40), loader);
+const mob1 = new MOBS.mobs(1, 100, 4, new THREE.Vector3(0, 1, -40), loader);
 mob1.addToScene(scene);
-const mob2 = new MOBS.mobs(2, 100, 2.90, new THREE.Vector3(10, 1, -40), loader);
+const mob2 = new MOBS.mobs(2, 100, 4, new THREE.Vector3(10, 1, -40), loader);
 mob2.addToScene(scene);
 
 // EVENT LISTENERS AND PAUSE MENU
@@ -130,20 +130,22 @@ scene.add(player1.getPlayerControls().getObject());
 //////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
-
+  let deltaTimeStoring = clock.getDelta();
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
-  player1.update(clock.getDelta());
-  mob1.update(player1.camera.position, clock.getDelta());
-  mob2.update(player1.camera.position, clock.getDelta());
+  player1.update(deltaTimeStoring);
+  mob1.update(player1.camera.position, deltaTimeStoring);
+  mob2.update(player1.camera.position, deltaTimeStoring);
 
 
   renderer.render(scene, camera);
 }
 updatePlay();
+
+//IN CASE OF WINDOW RESIZE//
 onresize = (event) => {
   renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
-  camera.aspect(window.innerWidth / window.innerHeight);
+  camera.aspect = (window.innerWidth / window.innerHeight);
 };
 //////////APP MAIN LOOP////////////
 
