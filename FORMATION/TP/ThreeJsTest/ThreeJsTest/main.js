@@ -58,18 +58,18 @@ cube1.position.y = 0.5;
 cube1.position.z = -50;
 
 // FLOOR
-const geometry2 = new THREE.BoxGeometry(100, 100, 0.1);
+const geometry2 = new THREE.BoxGeometry(100, 0.1, 100);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
 const textureFloor = loader.load('/images.jpg');
 const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
 const floor = new THREE.Mesh(geometry2, materialFloor);
 floor.receiveShadow = true;
 scene.add(floor);
-floor.rotation.x = 1.5708;
-floor.position.y = -0.1;
+// floor.rotation.x = 1.5708;
+floor.position.set(0, -1, 0);
 let floorCollider = { mesh: floor };
 //floor collider
-floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 100, 0.1));
+floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 0.1, 100));
 floorCollider.mass = 0;
 floorCollider.body = new Cannon.Body({
   mass: 0
