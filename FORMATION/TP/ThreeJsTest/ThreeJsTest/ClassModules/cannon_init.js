@@ -1,46 +1,45 @@
-import * as CANNON from '..//node_modules/cannon/build/cannon.js';
+import Cannon from 'cannon';
 
+function initCannon() {
 
-var world, mass, body, shape, timeStep = 1 / 60;
-
-
-function initCannon(sceneObjectArray) {
-
-    world = new CANNON.World();
-    world.gravity.set(0, 0, 0);
-    world.broadphase = new CANNON.NaiveBroadphase();
+    let world = new Cannon.World();
+    world.gravity.set(0, -9.82, 0);
+    world.broadphase = new Cannon.NaiveBroadphase();
     world.solver.iterations = 10;
 
-   
+    //ADD GROUND
+    return world;
+
+}
+
+function addBoxCollider(sceneObject, world, sceneObjectArray) {
     
+        sceneObject.shape = new Cannon.Box(new Cannon.Vec3(1, 2, 1));
+        sceneObject.mass = 1;
+        sceneObject.body = new Cannon.Body({
+            mass: 1
+        });
 
-}
+    sceneObject.body.addShape(sceneObject.shape);
 
-function addBoxCollider(){
-     shape = new CANNON.Box(new CANNON.Vec3(1, 1, 1));
-    mass = 1;
-    body = new CANNON.Body({
-        mass: 1
-    });
-    body.addShape(shape);
-    body.angularVelocity.set(0, 10, 0);
-    body.angularDamping = 0.5;
-    world.addBody(body);
+    world.addBody(sceneObject.body);
+    sceneObjectArray.push({ mesh: sceneObject.mesh, collider: sceneObject.body })
 }
 
 
-function updatePhysics(sceneObjectArray) {
-
+function updatePhysics(sceneObjectArray, world) {
+    let timeStep = 1 / 60;
     // Step the physics world
     world.step(timeStep);
 
     // Copy coordinates from Cannon.js to Three.js
-    sceneObject.forEach(object => {
-        object.position.copy(collider.position);
-        object.quaternion.copy(collider.quaternion);
+    sceneObjectArray.forEach(object => {
+        object.mesh.position.copy(object.collider.position);
+        object.mesh.quaternion.copy(object.collider.quaternion);
+        
     });
 
 }
 
 
-export { initCannon };
+export { initCannon, addBoxCollider, updatePhysics };

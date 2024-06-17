@@ -6,8 +6,8 @@ import * as MOBS from './ClassModules/mobs.js'
 import * as THREE from './three.js-master/build/three.module.js';
 import * as MAP from './ClassModules/map.js';
 
-import * as CANNON from './node_modules/cannon/build/cannon.js';
 import * as CANNON_INIT from './ClassModules/cannon_init.js';
+import Cannon from 'cannon';
 
 
 //INIT SCENE AND CAMERA
@@ -22,8 +22,9 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
 document.getElementById("game_container").appendChild(renderer.domElement);
 
-//array of all scene object to process collision
-let sceneObjectArray;
+//////////CANNON VAR INIT/////////////
+let sceneObjectArray = [];
+let world = CANNON_INIT.initCannon();
 
 //TEXTURE LOADER
 const loader = new THREE.TextureLoader();
@@ -66,6 +67,19 @@ floor.receiveShadow = true;
 scene.add(floor);
 floor.rotation.x = 1.5708;
 floor.position.y = -0.1;
+let floorCollider = { mesh: floor };
+//floor collider
+floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 100, 0.1));
+floorCollider.mass = 0;
+floorCollider.body = new Cannon.Body({
+  mass: 0
+});
+
+floorCollider.body.addShape(floorCollider.shape);
+
+world.addBody(floorCollider.body);
+floorCollider.mesh.position.copy(floorCollider.body.position);
+floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
 
 //AMBIENT LIGHT
 const light = new THREE.AmbientLight(0xcccccc); // soft white light
@@ -135,8 +149,11 @@ scene.add(player1.getPlayerControls().getObject());
 
 
 /////////////////CANNON INIT////////////
+//array of all scene object to process collision
 
-CANNON_INIT.initCannon();
+CANNON_INIT.addBoxCollider(player1, world, sceneObjectArray);
+CANNON_INIT.addBoxCollider(mob1, world, sceneObjectArray);
+CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
 
@@ -145,7 +162,6 @@ CANNON_INIT.initCannon();
 function updatePlay() {
   requestAnimationFrame(updatePlay);
   let deltaTimeStoring = clock.getDelta();
-
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
@@ -156,7 +172,8 @@ function updatePlay() {
   mob1.update(player1.camera.position, deltaTimeStoring);
   mob2.update(player1.camera.position, deltaTimeStoring);
 
-
+  //UPDATE PHYSICS THROUGH CANNON
+  CANNON_INIT.updatePhysics(sceneObjectArray, world);
   renderer.render(scene, camera);
 }
 updatePlay();

@@ -44,13 +44,13 @@ class mobs {
 
 
         //DEBUG UPDATE CALL NUMBER
-        this.deltaSum += deltaTime;
-        this.updateCall++;
-        if (this.deltaSum > 1) {
-            console.log('MOB',this.Id,'Update has been called : ', this.updateCall, ' times per second!');
-            this.deltaSum = 0;
-            this.updateCall = 0;
-        }
+        // this.deltaSum += deltaTime;
+        // this.updateCall++;
+        // if (this.deltaSum > 1) {
+        //     console.log('MOB',this.Id,'Update has been called : ', this.updateCall, ' times per second!');
+        //     this.deltaSum = 0;
+        //     this.updateCall = 0;
+        // }
     }
 
 }
