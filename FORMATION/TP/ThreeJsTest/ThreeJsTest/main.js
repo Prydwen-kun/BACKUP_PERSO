@@ -6,6 +6,9 @@ import * as MOBS from './ClassModules/mobs.js'
 import * as THREE from './three.js-master/build/three.module.js';
 import * as MAP from './ClassModules/map.js';
 
+import * as CANNON from './node_modules/cannon/build/cannon.js';
+import * as CANNON_INIT from './ClassModules/cannon_init.js';
+
 
 //INIT SCENE AND CAMERA
 const scene = new THREE.Scene();
@@ -18,6 +21,9 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
 document.getElementById("game_container").appendChild(renderer.domElement);
+
+//array of all scene object to process collision
+let sceneObjectArray;
 
 //TEXTURE LOADER
 const loader = new THREE.TextureLoader();
@@ -127,12 +133,25 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 
 scene.add(player1.getPlayerControls().getObject());
 
+
+/////////////////CANNON INIT////////////
+
+CANNON_INIT.initCannon();
+
+/////////////////CANNON INIT////////////
+
+
 //////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
   let deltaTimeStoring = clock.getDelta();
+
+
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
+
+
+  //UPDATE ALL ACTOR IN THE SCENE
   player1.update(deltaTimeStoring);
   mob1.update(player1.camera.position, deltaTimeStoring);
   mob2.update(player1.camera.position, deltaTimeStoring);
