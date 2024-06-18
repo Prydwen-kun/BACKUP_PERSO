@@ -42,8 +42,8 @@ const cube = new THREE.Mesh(geometry, material);
 cube.castShadow = true;
 cube.receiveShadow = false;
 scene.add(cube);
-cube.position.y = 1.5;
-cube.position.x = -20;
+cube.position.y = 1;
+cube.position.x = -10;
 
 //WALL
 const geometry1 = new THREE.BoxGeometry(100, 40, 1);
@@ -58,28 +58,34 @@ cube1.position.y = 0.5;
 cube1.position.z = -50;
 
 // FLOOR
-const geometry2 = new THREE.BoxGeometry(100, 0.1, 100);
+const geometry2 = new THREE.BoxGeometry(100, 1, 100);
 const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
 const textureFloor = loader.load('/images.jpg');
 const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
 const floor = new THREE.Mesh(geometry2, materialFloor);
 floor.receiveShadow = true;
+
 scene.add(floor);
+// floor.position.set(-50, -1, 0);
+floor.translateY(-0.5);
+floor.updateMatrix();
 // floor.rotation.x = 1.5708;
-floor.position.set(0, -1, 0);
-let floorCollider = { mesh: floor };
+// floor.position.y = -1;
+let floorCollider = { mesh: floor, isActor: false };
 //floor collider
-floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 0.1, 100));
+floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 1, 100));
 floorCollider.mass = 0;
 floorCollider.body = new Cannon.Body({
   mass: 0
 });
 
 floorCollider.body.addShape(floorCollider.shape);
-
+// floorCollider.mesh.position.copy(floorCollider.body.position);
+floorCollider.body.position.copy(floorCollider.mesh.position);
+// floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
+floorCollider.body.quaternion.copy(floorCollider.mesh.quaternion);
 world.addBody(floorCollider.body);
-floorCollider.mesh.position.copy(floorCollider.body.position);
-floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
+
 
 //AMBIENT LIGHT
 const light = new THREE.AmbientLight(0xcccccc); // soft white light
@@ -110,12 +116,12 @@ scene.add(helper);
 
 //camera position
 camera.position.z = 5;
-camera.position.y = 1.5;
+camera.position.y = 1.75;
 
 //PLAYER
 const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
-//ENNEMIES
+//ENNEMIES//POSITION is 1 (origin of transform to put base of cube at 0y)
 const mob1 = new MOBS.mobs(1, 100, 4, new THREE.Vector3(0, 1, -40), loader);
 mob1.addToScene(scene);
 const mob2 = new MOBS.mobs(2, 100, 4, new THREE.Vector3(10, 1, -40), loader);
@@ -147,17 +153,29 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 
 scene.add(player1.getPlayerControls().getObject());
 
-
+////////////////////SOME RANDOM TEST SPHERE///////////////////////
+const geometrySphere = new THREE.SphereGeometry(1, 32, 32);
+const materialSphere = new THREE.MeshLambertMaterial({ color: 0xcc1500 });
+const sphere1 = new THREE.Mesh(geometrySphere, materialSphere);
+sphere1.castShadow = true;
+sphere1.receiveShadow = true;
+scene.add(sphere1);
+sphere1.position.y = 5;
+sphere1.position.x = 0;
+sphere1.position.z = -10;
+let sphere1Collider = { mesh: sphere1, isActor: false };
 /////////////////CANNON INIT////////////
 //array of all scene object to process collision
 
 CANNON_INIT.addBoxCollider(player1, world, sceneObjectArray);
 CANNON_INIT.addBoxCollider(mob1, world, sceneObjectArray);
-CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
+// CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
+CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
-
-
+//canon helper
+let cannonDebugBox = new THREE.BoxHelper(floor, 0xffff00);
+scene.add(cannonDebugBox);
 //////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
@@ -169,11 +187,13 @@ function updatePlay() {
 
   //UPDATE ALL ACTOR IN THE SCENE
   player1.update(deltaTimeStoring);
-  mob1.update(player1.camera.position, deltaTimeStoring);
-  mob2.update(player1.camera.position, deltaTimeStoring);
+  mob1.update(player1.mesh.position, deltaTimeStoring);
+  mob2.update(player1.mesh.position, deltaTimeStoring);
+  // console.log(player1.mesh.position.y);
 
   //UPDATE PHYSICS THROUGH CANNON
   CANNON_INIT.updatePhysics(sceneObjectArray, world);
+
   renderer.render(scene, camera);
 }
 updatePlay();

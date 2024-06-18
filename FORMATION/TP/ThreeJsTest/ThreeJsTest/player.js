@@ -13,13 +13,15 @@ class player {
     this.health = 100;
     this.stamina = 100;
 
+    this.isActor = true;
+
     this.geometry = new THREE.BoxGeometry(1, 2, 1);
     this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.castShadow = true;
     this.mesh.receiveShadow = false;
-    this.mesh.position.set(camera.position);
-
+    // this.mesh.position.set(camera.position);
+    this.mesh.position.set(camera.position.x, camera.position.y - 0.75, camera.position.z);
     //position and speed
     this.velocity = 10;
     this.direction = new THREE.Vector3(0, 0, 1);
@@ -88,7 +90,7 @@ class player {
 
     }
 
-    this.mesh.position.set(this.camera.position);
+    this.mesh.position.set(this.camera.position.x, this.camera.position.y - 0.75, this.camera.position.z);
 
   }
 }

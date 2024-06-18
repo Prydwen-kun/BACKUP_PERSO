@@ -15,7 +15,7 @@ class mobs {
         this.mesh.receiveShadow = false;
         this.mesh.position.set(spawnPosition.x, spawnPosition.y, spawnPosition.z);
 
-
+        this.isActor = true;
 
         //POUR DEBUG
         this.deltaSum = 0;
@@ -34,7 +34,7 @@ class mobs {
 
     update(playerPosition, deltaTime) {
 
-        this.mesh.lookAt(playerPosition.x, 1, playerPosition.z);
+        this.mesh.lookAt(playerPosition.x, playerPosition.y, playerPosition.z);
         let directionNormal = new THREE.Vector3(0, 0, 0);
         this.mesh.getWorldDirection(directionNormal);
         directionNormal.normalize();
