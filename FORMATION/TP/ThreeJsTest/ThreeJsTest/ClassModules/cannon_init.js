@@ -28,6 +28,23 @@ function addBoxCollider(sceneObject, world, sceneObjectArray) {
     sceneObjectArray.push({ mesh: sceneObject.mesh, collider: sceneObject.body })
 }
 
+function addStaticBoxCollider(sceneObject, world, sceneObjectArray) {
+
+    sceneObject.shape = new Cannon.Box(new Cannon.Vec3(1, 2, 1));
+    sceneObject.mass = 0;
+    sceneObject.body = new Cannon.Body({
+        mass: 0
+    });
+
+    sceneObject.body.addShape(sceneObject.shape);
+
+    sceneObject.body.position.copy(sceneObject.mesh.position);
+    sceneObject.body.quaternion.copy(sceneObject.mesh.quaternion);
+
+    world.addBody(sceneObject.body);
+    sceneObjectArray.push({ mesh: sceneObject.mesh, collider: sceneObject.body })
+}
+
 function addSphereCollider(sceneObject, world, sceneObjectArray) {
 
     sceneObject.shape = new Cannon.Sphere(1);
@@ -66,4 +83,4 @@ function updatePhysics(sceneObjectArray, world) {
 }
 
 
-export { initCannon, addBoxCollider, addSphereCollider, updatePhysics };
+export { initCannon, addBoxCollider, addStaticBoxCollider, addSphereCollider, updatePhysics };

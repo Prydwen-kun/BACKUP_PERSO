@@ -28,8 +28,8 @@ class map {
     }
     generateMapCollider(world, sceneObjectArray) {
         for (const mapObject in this) {
-            if (typeof this[mapObject] === 'CUBE' && this[mapObject] !== null) {
-                CANNON_INIT.addBoxCollider(this[mapObject], world, sceneObjectArray);
+            if (mapObject.includes('wall')) {
+                CANNON_INIT.addStaticBoxCollider(this[mapObject], world, sceneObjectArray);
             }
             else{
                 console.log(mapObject);
