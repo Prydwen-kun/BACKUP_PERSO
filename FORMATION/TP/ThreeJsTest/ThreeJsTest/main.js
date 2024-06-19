@@ -23,7 +23,7 @@ document.getElementById("game_container").appendChild(renderer.domElement);
 
 //////////CANNON VAR INIT/////////////
 let sceneObjectArray = [];
-let world = CANNON_INIT.initCannon();
+const world = CANNON_INIT.initCannon();
 
 //TEXTURE LOADER
 const loader = new THREE.TextureLoader();
@@ -164,7 +164,7 @@ CANNON_INIT.addBoxCollider(mob1, world, sceneObjectArray);
 CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
-//canon helper
+//plane floor
 //MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 const planeShape = new CANNON.Plane();
 const planeBody = new CANNON.Body({
@@ -196,7 +196,7 @@ function updatePlay() {
   deltaSum += deltaTimeStoring;
 
   if (deltaSum > 1) {
-    sphere1Collider.body.applyImpulse(new CANNON.Vec3(0, 50, 0), sphere1Collider.mesh.position);
+    sphere1Collider.body.applyImpulse(new CANNON.Vec3(0, 80, 0), sphere1Collider.mesh.position);
     deltaSum = 0;
   }
 
