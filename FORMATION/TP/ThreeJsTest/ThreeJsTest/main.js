@@ -32,8 +32,7 @@ const loader = new THREE.TextureLoader();
 //CLOCK
 const clock = new THREE.Clock();
 
-//INIT MAP
-const map1 = new MAP.map(scene, loader);
+
 
 // ROTATING CUBE
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -44,18 +43,6 @@ cube.receiveShadow = false;
 scene.add(cube);
 cube.position.y = 1;
 cube.position.x = -10;
-
-//WALL
-const geometry1 = new THREE.BoxGeometry(100, 40, 1);
-const material1 = new THREE.MeshLambertMaterial({ color: 0x00aaee });
-const textureWall = loader.load('/oldWood.avif');
-const materialWall = new THREE.MeshLambertMaterial({ map: textureWall });
-const cube1 = new THREE.Mesh(geometry1, materialWall);
-cube1.castShadow = true;
-cube1.receiveShadow = true;
-scene.add(cube1);
-cube1.position.y = 0.5;
-cube1.position.z = -50;
 
 // FLOOR
 const geometry2 = new THREE.BoxGeometry(100, 1, 100);
@@ -104,7 +91,7 @@ directionalLight.shadow.camera.bottom = -60;
 directionalLight.shadow.camera.left = -60;
 directionalLight.shadow.camera.right = 60;
 scene.add(directionalLight);
-directionalLight.target = cube1; //wall
+directionalLight.target = floor; //wall
 scene.add(directionalLight.target);
 const helperLight = new THREE.DirectionalLightHelper(directionalLight, 5);
 scene.add(helperLight);
@@ -152,6 +139,10 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 });
 
 scene.add(player1.getPlayerControls().getObject());
+
+//INIT MAP
+const map1 = new MAP.map(scene, loader);
+map1.generateMapCollider(world, sceneObjectArray);
 
 ////////////////////SOME RANDOM TEST SPHERE///////////////////////
 const geometrySphere = new THREE.SphereGeometry(1, 32, 32);
