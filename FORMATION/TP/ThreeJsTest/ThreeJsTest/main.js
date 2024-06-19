@@ -177,7 +177,7 @@ world.addBody(planeBody);
 
 //DELTA SUM DEBUG
 let deltaSum = 0;
-
+console.log('scene object array : ',sceneObjectArray);
 //////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
