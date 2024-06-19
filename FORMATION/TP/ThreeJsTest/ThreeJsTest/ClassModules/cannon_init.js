@@ -32,7 +32,7 @@ function addBoxCollider(sceneObject, world, sceneObjectArray) {
 
 function addStaticBoxCollider(sceneObject, world, sceneObjectArray) {
 
-    sceneObject.shape = new CANNON.Box(new CANNON.Vec3(1, 2, 1));
+    sceneObject.shape = new CANNON.Box(new CANNON.Vec3(100, 40, 1));
     sceneObject.mass = 0;
     sceneObject.body = new CANNON.Body({
         mass: 0

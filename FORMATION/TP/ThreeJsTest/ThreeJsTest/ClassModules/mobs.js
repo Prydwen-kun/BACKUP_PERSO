@@ -39,9 +39,15 @@ class mobs {
         this.mesh.getWorldDirection(directionNormal);
         directionNormal.normalize();
 
-        this.mesh.translateOnAxis(directionNormal, this.velocity * deltaTime);
+        // this.mesh.translateOnAxis(directionNormal, this.velocity * deltaTime);
         // this.mesh.position.lerp(playerPosition, 0.005);
-
+        try {
+            if (this.body !== null) {
+                this.body.applyImpulse(directionNormal.multiplyScalar(this.velocity/20), this.mesh.position);
+            }
+        } catch (e) {
+            //console.log('error');
+        }
 
         //DEBUG UPDATE CALL NUMBER
         // this.deltaSum += deltaTime;

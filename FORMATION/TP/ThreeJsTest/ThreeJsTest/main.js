@@ -160,7 +160,7 @@ let sphere1Collider = { mesh: sphere1, isActor: false };
 
 CANNON_INIT.addBoxCollider(player1, world, sceneObjectArray);
 CANNON_INIT.addBoxCollider(mob1, world, sceneObjectArray);
-// CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
+CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
 CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
