@@ -1,11 +1,13 @@
-import Cannon from 'cannon';
+import * as CANNON from 'cannon-es'
 
 function initCannon() {
 
-    let world = new Cannon.World();
-    world.gravity.set(0, -9.82, 0);
-    world.broadphase = new Cannon.NaiveBroadphase();//need to look into this shit
-    world.solver.iterations = 10;
+    const world = new CANNON.World({
+        gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
+    })
+
+    // world.broadphase = new CANNON.NaiveBroadphase();//need to look into this shit
+    // world.solver.iterations = 10;
 
     return world;
 
@@ -13,9 +15,9 @@ function initCannon() {
 
 function addBoxCollider(sceneObject, world, sceneObjectArray) {
 
-    sceneObject.shape = new Cannon.Box(new Cannon.Vec3(1, 2, 1));
+    sceneObject.shape = new CANNON.Box(new CANNON.Vec3(1, 2, 1));
     sceneObject.mass = 1;
-    sceneObject.body = new Cannon.Body({
+    sceneObject.body = new CANNON.Body({
         mass: 1
     });
 
@@ -30,9 +32,9 @@ function addBoxCollider(sceneObject, world, sceneObjectArray) {
 
 function addStaticBoxCollider(sceneObject, world, sceneObjectArray) {
 
-    sceneObject.shape = new Cannon.Box(new Cannon.Vec3(1, 2, 1));
+    sceneObject.shape = new CANNON.Box(new CANNON.Vec3(1, 2, 1));
     sceneObject.mass = 0;
-    sceneObject.body = new Cannon.Body({
+    sceneObject.body = new CANNON.Body({
         mass: 0
     });
 
@@ -47,9 +49,9 @@ function addStaticBoxCollider(sceneObject, world, sceneObjectArray) {
 
 function addSphereCollider(sceneObject, world, sceneObjectArray) {
 
-    sceneObject.shape = new Cannon.Sphere(1);
+    sceneObject.shape = new CANNON.Sphere(1);
     sceneObject.mass = 10;
-    sceneObject.body = new Cannon.Body({
+    sceneObject.body = new CANNON.Body({
         mass: 10
     });
 
@@ -63,19 +65,20 @@ function addSphereCollider(sceneObject, world, sceneObjectArray) {
 }
 
 
-function updatePhysics(sceneObjectArray, world) {
-    let timeStep = 1 / 60;
+function updatePhysics(sceneObjectArray, world, deltaTime) {
     // Step the physics world
-    world.step(timeStep);
+    world.step(1 / 60, deltaTime, 10);
     // Copy coordinates from Cannon.js to Three.js
     sceneObjectArray.forEach(object => {
-        if (!object.isActor) {
-            object.mesh.position.copy(object.collider.position);
-            object.mesh.quaternion.copy(object.collider.quaternion);
-        } else {
-            object.collider.position.copy(object.mesh.position);
-            object.collider.quaternion.copy(object.mesh.quaternion);
-        }
+        // if (!object.isActor) {
+        //     object.mesh.position.copy(object.collider.position);
+        //     object.mesh.quaternion.copy(object.collider.quaternion);
+        // } else {
+        //     object.collider.position.copy(object.mesh.position);
+        //     object.collider.quaternion.copy(object.mesh.quaternion);
+        // }
+        object.mesh.position.copy(object.collider.position);
+        object.mesh.quaternion.copy(object.collider.quaternion);
     });
 
 

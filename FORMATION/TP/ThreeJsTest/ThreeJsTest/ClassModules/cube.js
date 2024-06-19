@@ -9,17 +9,19 @@ class cube {
         this.mesh = new THREE.Mesh(geometry, materialWall);
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = true;
-        
+
         this.mesh.position.x = posX;
         this.mesh.position.y = posY;
         this.mesh.position.z = posZ;
+
+        this.isActor = false;
     }
     rotate(rotX, rotY, rotZ) {
         this.mesh.rotateX(rotX);
         this.mesh.rotateY(rotY);
         this.mesh.rotateZ(rotZ);
     }
-    addToScene(scene){
+    addToScene(scene) {
         scene.add(this.mesh);
     }
 

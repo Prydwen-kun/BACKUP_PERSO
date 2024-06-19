@@ -5,9 +5,8 @@ import * as PLAYER from './player.js'
 import * as MOBS from './ClassModules/mobs.js'
 import * as THREE from './three.js-master/build/three.module.js';
 import * as MAP from './ClassModules/map.js';
-
+import * as CANNON from 'cannon-es'
 import * as CANNON_INIT from './ClassModules/cannon_init.js';
-import Cannon from 'cannon';
 
 
 //INIT SCENE AND CAMERA
@@ -45,34 +44,37 @@ cube.position.y = 1;
 cube.position.x = -10;
 
 // FLOOR
-const geometry2 = new THREE.BoxGeometry(100, 1, 100);
-const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
-const textureFloor = loader.load('/images.jpg');
-const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
-const floor = new THREE.Mesh(geometry2, materialFloor);
-floor.receiveShadow = true;
+// const geometry2 = new THREE.BoxGeometry(100, 1, 100);
+// const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
+// const textureFloor = loader.load('/images.jpg');
+// const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
+// const floor = new THREE.Mesh(geometry2, materialFloor);
+// floor.receiveShadow = true;
 
-scene.add(floor);
-// floor.position.set(-50, -1, 0);
-floor.translateY(-0.5);
-floor.updateMatrix();
-// floor.rotation.x = 1.5708;
-// floor.position.y = -1;
-let floorCollider = { mesh: floor, isActor: false };
-//floor collider
-floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 1, 100));
-floorCollider.mass = 0;
-floorCollider.body = new Cannon.Body({
-  mass: 0
-});
+// scene.add(floor);
+// // floor.position.set(-50, -1, 0);
+// floor.translateY(-0.5);
+// floor.updateMatrix();
+// // floor.rotation.x = 1.5708;
+// // floor.position.y = -1;
+// let floorCollider = { mesh: floor, isActor: false };
+// //floor collider
+// floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 1, 100));
+// floorCollider.mass = 0;
+// floorCollider.body = new Cannon.Body({
+//   mass: 0
+// });
 
-floorCollider.body.addShape(floorCollider.shape);
-// floorCollider.mesh.position.copy(floorCollider.body.position);
-floorCollider.body.position.copy(floorCollider.mesh.position);
-// floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
-floorCollider.body.quaternion.copy(floorCollider.mesh.quaternion);
-world.addBody(floorCollider.body);
+// floorCollider.body.addShape(floorCollider.shape);
+// // floorCollider.mesh.position.copy(floorCollider.body.position);
+// floorCollider.body.position.copy(floorCollider.mesh.position);
+// // floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
+// floorCollider.body.quaternion.copy(floorCollider.mesh.quaternion);
+// world.addBody(floorCollider.body);
 
+/////////////////////INIT MAP/////////////////
+const map1 = new MAP.map(scene, loader);
+map1.generateMapCollider(world, sceneObjectArray);
 
 //AMBIENT LIGHT
 const light = new THREE.AmbientLight(0xcccccc); // soft white light
@@ -91,7 +93,7 @@ directionalLight.shadow.camera.bottom = -60;
 directionalLight.shadow.camera.left = -60;
 directionalLight.shadow.camera.right = 60;
 scene.add(directionalLight);
-directionalLight.target = floor; //wall
+directionalLight.target = map1.wallFloor.mesh; //wall
 scene.add(directionalLight.target);
 const helperLight = new THREE.DirectionalLightHelper(directionalLight, 5);
 scene.add(helperLight);
@@ -140,9 +142,7 @@ player1.getPlayerControls().addEventListener('unlock', function () {
 
 scene.add(player1.getPlayerControls().getObject());
 
-//INIT MAP
-const map1 = new MAP.map(scene, loader);
-map1.generateMapCollider(world, sceneObjectArray);
+
 
 ////////////////////SOME RANDOM TEST SPHERE///////////////////////
 const geometrySphere = new THREE.SphereGeometry(1, 32, 32);
@@ -165,8 +165,19 @@ CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
 //canon helper
-let cannonDebugBox = new THREE.BoxHelper(floor, 0xffff00);
-scene.add(cannonDebugBox);
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+const planeShape = new CANNON.Plane();
+const planeBody = new CANNON.Body({
+  mass: 0,
+});
+
+planeBody.addShape(planeShape);
+planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5);
+world.addBody(planeBody);
+
+//DELTA SUM DEBUG
+let deltaSum = 0;
+
 //////////APP MAIN LOOP////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
@@ -180,10 +191,17 @@ function updatePlay() {
   player1.update(deltaTimeStoring);
   mob1.update(player1.mesh.position, deltaTimeStoring);
   mob2.update(player1.mesh.position, deltaTimeStoring);
-  // console.log(player1.mesh.position.y);
+
+  //DEBUG SPHERE ADD IMPULSE
+  deltaSum += deltaTimeStoring;
+
+  if (deltaSum > 1) {
+    sphere1Collider.body.applyImpulse(new CANNON.Vec3(0, 50, 0), sphere1Collider.mesh.position);
+    deltaSum = 0;
+  }
 
   //UPDATE PHYSICS THROUGH CANNON
-  CANNON_INIT.updatePhysics(sceneObjectArray, world);
+  CANNON_INIT.updatePhysics(sceneObjectArray, world, deltaTimeStoring);
 
   renderer.render(scene, camera);
 }
