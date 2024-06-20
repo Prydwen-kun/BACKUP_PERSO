@@ -5,8 +5,8 @@ class mobs {
         this.Id = Id;
         this.health = health; //100
         this.velocity = velocity; //2.90
-
-        this.geometry = new THREE.BoxGeometry(1, 2, 1);
+        this.size = new THREE.Vector3(1, 2, 1);
+        this.geometry = new THREE.BoxGeometry(this.size.x,this.size.y,this.size.z);
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
         this.texture = loader.load('/herobrine.png');//need to wrap an eventual texture with wrapT // UV pos
         this.material1 = new THREE.MeshLambertMaterial({ map: this.texture });

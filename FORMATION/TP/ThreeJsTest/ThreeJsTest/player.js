@@ -14,8 +14,8 @@ class player {
     this.stamina = 100;
 
     this.isActor = true;
-
-    this.geometry = new THREE.BoxGeometry(1, 2, 1);
+    this.size = new THREE.Vector3(1, 2, 1);
+    this.geometry = new THREE.BoxGeometry(this.size.x,this.size.y,this.size.z);
     this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.castShadow = true;
