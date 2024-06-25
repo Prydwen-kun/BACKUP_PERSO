@@ -166,14 +166,14 @@ CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 /////////////////CANNON INIT////////////
 //plane floor
 //MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-const planeShape = new CANNON.Plane();
-const planeBody = new CANNON.Body({
-  mass: 0,
-});
+// const planeShape = new CANNON.Plane();
+// const planeBody = new CANNON.Body({
+//   mass: 0,
+// });
 
-planeBody.addShape(planeShape);
-planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5);
-world.addBody(planeBody);
+// planeBody.addShape(planeShape);
+// planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5);
+// world.addBody(planeBody);
 
 //DELTA SUM DEBUG
 let deltaSum = 0;

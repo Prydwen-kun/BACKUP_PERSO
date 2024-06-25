@@ -1,5 +1,5 @@
 import * as CANNON from 'cannon-es'
-
+import * as THREE from '..//three.js-master/build/three.module.js';
 function initCannon() {
 
     const world = new CANNON.World({
@@ -14,8 +14,8 @@ function initCannon() {
 }
 
 function addBoxCollider(sceneObject, world, sceneObjectArray) {
-
-    sceneObject.shape = new CANNON.Box(sceneObject.size);
+    let sizeCopy = new THREE.Vector3(sceneObject.size.x / 2, sceneObject.size.y / 2, sceneObject.size.z / 2);
+    sceneObject.shape = new CANNON.Box(sizeCopy);//sceneObject.size
     sceneObject.mass = 1;
     sceneObject.body = new CANNON.Body({
         mass: 1
@@ -31,8 +31,8 @@ function addBoxCollider(sceneObject, world, sceneObjectArray) {
 }
 
 function addStaticBoxCollider(sceneObject, world, sceneObjectArray) {
-
-    sceneObject.shape = new CANNON.Box(sceneObject.size);
+    let sizeCopy = new THREE.Vector3(sceneObject.size.x / 2, sceneObject.size.y / 2, sceneObject.size.z / 2);
+    sceneObject.shape = new CANNON.Box(sizeCopy);
     sceneObject.mass = 0;
     sceneObject.body = new CANNON.Body({
         mass: 0
