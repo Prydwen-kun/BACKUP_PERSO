@@ -15,7 +15,7 @@ class player {
 
     this.isActor = true;
     this.size = new THREE.Vector3(1, 2, 1);
-    this.geometry = new THREE.BoxGeometry(this.size.x,this.size.y,this.size.z);
+    this.geometry = new THREE.BoxGeometry(this.size.x, this.size.y, this.size.z);
     this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.castShadow = true;
@@ -89,8 +89,10 @@ class player {
       this.controls.moveRight(this.velocity * delta);
 
     }
-
-    this.mesh.position.set(this.camera.position.x, this.camera.position.y - 0.75, this.camera.position.z);
+    if (typeof this.body !== undefined) {
+      this.body.position.copy(this.camera.position);
+      this.body.quaternion.copy(this.camera.quaternion);
+    }
 
   }
 }
