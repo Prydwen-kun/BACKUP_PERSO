@@ -43,35 +43,6 @@ scene.add(cube);
 cube.position.y = 1;
 cube.position.x = -10;
 
-// FLOOR
-// const geometry2 = new THREE.BoxGeometry(100, 1, 100);
-// const material2 = new THREE.MeshLambertMaterial({ color: 0xdddddd });
-// const textureFloor = loader.load('/images.jpg');
-// const materialFloor = new THREE.MeshLambertMaterial({ map: textureFloor });
-// const floor = new THREE.Mesh(geometry2, materialFloor);
-// floor.receiveShadow = true;
-
-// scene.add(floor);
-// // floor.position.set(-50, -1, 0);
-// floor.translateY(-0.5);
-// floor.updateMatrix();
-// // floor.rotation.x = 1.5708;
-// // floor.position.y = -1;
-// let floorCollider = { mesh: floor, isActor: false };
-// //floor collider
-// floorCollider.shape = new Cannon.Box(new Cannon.Vec3(100, 1, 100));
-// floorCollider.mass = 0;
-// floorCollider.body = new Cannon.Body({
-//   mass: 0
-// });
-
-// floorCollider.body.addShape(floorCollider.shape);
-// // floorCollider.mesh.position.copy(floorCollider.body.position);
-// floorCollider.body.position.copy(floorCollider.mesh.position);
-// // floorCollider.mesh.quaternion.copy(floorCollider.body.quaternion);
-// floorCollider.body.quaternion.copy(floorCollider.mesh.quaternion);
-// world.addBody(floorCollider.body);
-
 /////////////////////INIT MAP/////////////////
 const map1 = new MAP.map(scene, loader);
 map1.generateMapCollider(world, sceneObjectArray);
@@ -115,7 +86,9 @@ const mob1 = new MOBS.mobs(1, 100, 4, new THREE.Vector3(0, 1, -40), loader);
 mob1.addToScene(scene);
 const mob2 = new MOBS.mobs(2, 100, 4, new THREE.Vector3(10, 1, -40), loader);
 mob2.addToScene(scene);
-
+///////////////
+// scene.remove(object); USE THIS FOR UPDATING KILL EVENT
+///////////////
 // EVENT LISTENERS AND PAUSE MENU
 const blocker = document.getElementById('blocker');
 const instructions = document.getElementById('instructions');
@@ -164,16 +137,6 @@ CANNON_INIT.addBoxCollider(mob2, world, sceneObjectArray);
 CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 /////////////////CANNON INIT////////////
-//plane floor
-//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-// const planeShape = new CANNON.Plane();
-// const planeBody = new CANNON.Body({
-//   mass: 0,
-// });
-
-// planeBody.addShape(planeShape);
-// planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5);
-// world.addBody(planeBody);
 
 //DELTA SUM DEBUG
 let deltaSum = 0;
@@ -217,9 +180,9 @@ onresize = (event) => {
 //exemple de rajout html
 document.querySelector('#app').innerHTML = `
   <nav class="nav_menu">
-    <h1><a href="index.html">App Logo</a></h1>
-    <a href="#">Download</a>
-    <a href="#">Git</a>
-    <a href="#">Doc</a>
+    <h1><a href="index.html">ThreeJs & Cannon-es Project</a></h1>
+    <a href="#">Download (package)</a>
+    <a href="https://github.com/Prydwen-kun/BACKUP_PERSO/tree/cannonBranch/FORMATION/TP/ThreeJsTest/ThreeJsTest">GitHub Folder</a>
+    <a href="https://pmndrs.github.io/cannon-es/docs/modules.html">Cannon-es Doc</a>
   </nav>
 `
