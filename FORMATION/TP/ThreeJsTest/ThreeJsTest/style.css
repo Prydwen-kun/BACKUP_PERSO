@@ -45,18 +45,21 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 5%;
   height: 10vh;
+  text-wrap: nowrap;
 }
 .nav_menu>a{
   flex: 1 1 auto;
   font-size: 2.4rem;
   border: 3px solid #213547;
+  background-color: #23384b;
   border-radius: 3px;
   transition: all 400ms ease-in;
+  padding: 10px;
 }
 .nav_menu>a:hover{
-  background-color: #213547;
+  background-color: #32506b;
 }
 
 #app {

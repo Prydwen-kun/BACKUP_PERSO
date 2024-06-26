@@ -13,6 +13,15 @@ class player {
     this.health = 100;
     this.stamina = 100;
 
+    this.isActor = true;
+    this.size = new THREE.Vector3(1, 2, 1);
+    this.geometry = new THREE.BoxGeometry(this.size.x, this.size.y, this.size.z);
+    this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.mesh.castShadow = true;
+    this.mesh.receiveShadow = false;
+    // this.mesh.position.set(camera.position);
+    this.mesh.position.set(camera.position.x, camera.position.y - 0.75, camera.position.z);
     //position and speed
     this.velocity = 10;
     this.direction = new THREE.Vector3(0, 0, 1);
@@ -79,6 +88,10 @@ class player {
     if (this.keymap["KeyD"] == true) {
       this.controls.moveRight(this.velocity * delta);
 
+    }
+    if (typeof this.body !== undefined) {
+      this.body.position.copy(this.camera.position);
+      this.body.quaternion.copy(this.camera.quaternion);
     }
 
   }
