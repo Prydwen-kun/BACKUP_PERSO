@@ -28,20 +28,24 @@ class map {
         this.wallFloor.rotate(0, 0, 0);
         this.wallFloor.addToScene(scene);
 
-
+        this.mapGeometry = [];
     }
     generateMapCollider(world, sceneObjectArray) {
         for (const mapObject in this) {
             if (mapObject.includes('wall')) {
                 CANNON_INIT.addStaticBoxCollider(this[mapObject], world, sceneObjectArray);
+                this.mapGeometry.push(mapObject);
             }
             else {
                 console.log(mapObject);
             }
         }
     }
-    getFloorObject(){
+    getFloorObject() {
         return this.wallFloor;
+    }
+    getMapGeometry(){
+        return this.mapGeometry;
     }
 
 
