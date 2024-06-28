@@ -140,8 +140,10 @@ CANNON_INIT.addSphereCollider(sphere1Collider, world, sceneObjectArray);
 
 //DELTA SUM DEBUG
 let deltaSum = 0;
-console.log('scene object array : ',sceneObjectArray);
-//////////APP MAIN LOOP////////////
+console.log('scene object array : ', sceneObjectArray);
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
 function updatePlay() {
   requestAnimationFrame(updatePlay);
   let deltaTimeStoring = clock.getDelta();
@@ -151,7 +153,7 @@ function updatePlay() {
 
 
   //UPDATE ALL ACTOR IN THE SCENE
-  player1.update(deltaTimeStoring);
+  player1.update(deltaTimeStoring, map1.getFloorObject());
   mob1.update(player1.mesh.position, deltaTimeStoring);
   mob2.update(player1.mesh.position, deltaTimeStoring);
 
@@ -175,7 +177,9 @@ onresize = (event) => {
   renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
   camera.aspect = (window.innerWidth / window.innerHeight);
 };
-//////////APP MAIN LOOP////////////
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
+/////////////////////////////////////////////////APP MAIN LOOP////////////////////////////////////
 
 //exemple de rajout html
 document.querySelector('#app').innerHTML = `

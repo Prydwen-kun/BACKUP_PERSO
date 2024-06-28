@@ -1,5 +1,6 @@
 import { PointerLockControls } from './three.js-master/examples/jsm/controls/PointerLockControls.js';
 import * as THREE from './three.js-master/build/three.module.js';
+import * as CANNON from 'cannon-es'
 
 class player {
   constructor(name, camera, domElement, clock) {
@@ -53,7 +54,7 @@ class player {
 
 
   //UPDATE PLAYER
-  update(delta) {
+  update(delta, floor) {
 
     //EVENT WATCH
 
@@ -89,9 +90,25 @@ class player {
       this.controls.moveRight(this.velocity * delta);
 
     }
+
     if (typeof this.body !== undefined) {
-      this.body.position.copy(this.camera.position);
-      this.body.quaternion.copy(this.camera.quaternion);
+      //JUMP
+      try {
+        if (this.keymap["Space"] == true && this.body.aabb.overlaps(floor.body.aabb)) {
+          this.camera.position.y += 9.82 * delta;
+        }
+        else if (!this.body.aabb.overlaps(floor.body.aabb)) {
+          this.camera.position.y -= -9.82 * delta;
+        }
+
+      }
+      catch (e) {
+        console.log('Error : ', e);
+      }
+
+      //update collider position
+      this.body.position.copy(new THREE.Vector3(this.camera.position.x, this.camera.position.y - 0.75, this.camera.position.z));
+      // this.body.quaternion.copy(this.camera.quaternion);
     }
 
   }

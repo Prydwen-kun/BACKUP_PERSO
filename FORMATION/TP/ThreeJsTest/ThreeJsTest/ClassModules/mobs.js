@@ -34,7 +34,7 @@ class mobs {
 
     update(playerPosition, deltaTime) {
 
-        this.mesh.lookAt(playerPosition.x, playerPosition.y, playerPosition.z);
+        this.mesh.lookAt(playerPosition.x, 1/*playerPosition.y*/, playerPosition.z);
         let directionNormal = new THREE.Vector3(0, 0, 0);
         this.mesh.getWorldDirection(directionNormal);
         directionNormal.normalize();
