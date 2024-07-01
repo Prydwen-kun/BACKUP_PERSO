@@ -82,9 +82,9 @@ camera.position.y = 1.75;
 const player1 = new PLAYER.player("P1", camera, renderer.domElement, clock);
 
 //ENNEMIES//POSITION is 1 (origin of transform to put base of cube at 0y)
-const mob1 = new MOBS.mobs(1, 100, 4, new THREE.Vector3(0, 1, -40), loader);
+const mob1 = new MOBS.mobs(1, 100, 10, new THREE.Vector3(0, 1, -40), loader);
 mob1.addToScene(scene);
-const mob2 = new MOBS.mobs(2, 100, 4, new THREE.Vector3(10, 1, -40), loader);
+const mob2 = new MOBS.mobs(2, 100, 10, new THREE.Vector3(10, 1, -40), loader);
 mob2.addToScene(scene);
 ///////////////
 // scene.remove(object); USE THIS FOR UPDATING KILL EVENT
@@ -160,7 +160,7 @@ function updatePlay() {
   //DEBUG SPHERE ADD IMPULSE
   deltaSum += deltaTimeStoring;
 
-  if (deltaSum > 1) {
+  if (deltaSum > 2) {
     sphere1Collider.body.applyImpulse(new CANNON.Vec3(0, 80, 0), sphere1Collider.mesh.position);
     deltaSum = 0;
   }
