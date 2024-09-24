@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4c757f32-bb86-4db9-ba2c-335084a85bfd}</ProjectGuid>
+    <RootNamespace>Project1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include=".vs\ProjectSettings.json" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="bin\Debug\Bomberman" />
+    <None Include="bin\Debug\libsfml-audio.so.2.2.0" />
+    <None Include="bin\Debug\libsfml-graphics.so.2.2.0" />
+    <None Include="bin\Debug\libsfml-network.so.2.2.0" />
+    <None Include="bin\Debug\libsfml-system.so.2.2.0" />
+    <None Include="bin\Debug\libsfml-window.so.2.2.0" />
+    <None Include="bin\Release\Bomberman.exe" />
+    <None Include="bin\Release\desolation.WTF" />
+    <None Include="bin\Release\libsfml-audio.so.2.2.0" />
+    <None Include="bin\Release\libsfml-graphics.so.2.2.0" />
+    <None Include="bin\Release\libsfml-network.so.2.2.0" />
+    <None Include="bin\Release\libsfml-system.so.2.2.0" />
+    <None Include="bin\Release\libsfml-window.so.2.2.0" />
+    <None Include="Bomberman.cbp" />
+    <None Include="Bomberman.depend" />
+    <None Include="Bomberman.layout" />
+    <None Include="desolation.WTF" />
+    <None Include="desolation1.WTF" />
+    <None Include="libsfml-audio.so.2.2.0" />
+    <None Include="libsfml-graphics.so.2.2.0" />
+    <None Include="libsfml-network.so.2.2.0" />
+    <None Include="libsfml-system.so.2.2.0" />
+    <None Include="libsfml-window.so.2.2.0" />
+    <None Include="LINK.sh" />
+    <None Include="obj\Release\libsfml-audio.so.2.2.0" />
+    <None Include="obj\Release\libsfml-graphics.so.2.2.0" />
+    <None Include="obj\Release\libsfml-network.so.2.2.0" />
+    <None Include="obj\Release\libsfml-system.so.2.2.0" />
+    <None Include="obj\Release\libsfml-window.so.2.2.0" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="bin\Debug\libsfml-audio.so" />
+    <Library Include="bin\Debug\libsfml-graphics.so" />
+    <Library Include="bin\Debug\libsfml-network.so" />
+    <Library Include="bin\Debug\libsfml-system.so" />
+    <Library Include="bin\Debug\libsfml-window.so" />
+    <Library Include="bin\Release\libsfml-audio.so" />
+    <Library Include="bin\Release\libsfml-graphics.so" />
+    <Library Include="bin\Release\libsfml-network.so" />
+    <Library Include="bin\Release\libsfml-system.so" />
+    <Library Include="bin\Release\libsfml-window.so" />
+    <Library Include="libsfml-audio.so" />
+    <Library Include="libsfml-graphics.so" />
+    <Library Include="libsfml-network.so" />
+    <Library Include="libsfml-system.so" />
+    <Library Include="libsfml-window.so" />
+    <Library Include="obj\Release\libsfml-audio.so" />
+    <Library Include="obj\Release\libsfml-graphics.so" />
+    <Library Include="obj\Release\libsfml-network.so" />
+    <Library Include="obj\Release\libsfml-system.so" />
+    <Library Include="obj\Release\libsfml-window.so" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bombe.cpp" />
+    <ClCompile Include="editeur.cpp" />
+    <ClCompile Include="joueur.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bombe.h" />
+    <ClInclude Include="joueur.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="menu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="font1.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bin\Release\TILESET.png" />
+    <Image Include="nvidia_geforce_gtx_titan_z_1.jpg" />
+    <Image Include="pointeur.gif" />
+    <Image Include="TILESET.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="obj\Debug\main.o" />
+    <Object Include="obj\Release\bombe.o" />
+    <Object Include="obj\Release\joueur.o" />
+    <Object Include="obj\Release\main.o" />
+    <Object Include="obj\Release\map.o" />
+    <Object Include="obj\Release\menu.o" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
