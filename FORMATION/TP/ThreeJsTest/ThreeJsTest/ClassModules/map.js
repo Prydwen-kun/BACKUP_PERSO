@@ -23,24 +23,29 @@ class map {
         this.wall4 = new CUBE.cube(100, 40, 1, loader, 0, 0.5, -50);
         this.wall4.rotate(0, 0, 0);
         this.wall4.addToScene(scene);
-        
+
         this.wallFloor = new CUBE.cube(100, 1, 100, loader, 0, -0.5, 0);
         this.wallFloor.rotate(0, 0, 0);
         this.wallFloor.addToScene(scene);
 
-
+        this.mapGeometry = [];
     }
     generateMapCollider(world, sceneObjectArray) {
         for (const mapObject in this) {
             if (mapObject.includes('wall')) {
                 CANNON_INIT.addStaticBoxCollider(this[mapObject], world, sceneObjectArray);
+                this.mapGeometry.push(mapObject);
             }
-            else{
+            else {
                 console.log(mapObject);
             }
-
-
         }
+    }
+    getFloorObject() {
+        return this.wallFloor;
+    }
+    getMapGeometry(){
+        return this.mapGeometry;
     }
 
 

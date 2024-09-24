@@ -70,15 +70,12 @@ function updatePhysics(sceneObjectArray, world, deltaTime) {
     world.step(1 / 60, deltaTime, 10);
     // Copy coordinates from Cannon.js to Three.js
     sceneObjectArray.forEach(object => {
-        // if (!object.isActor) {
-        //     object.mesh.position.copy(object.collider.position);
-        //     object.mesh.quaternion.copy(object.collider.quaternion);
-        // } else {
-        //     object.collider.position.copy(object.mesh.position);
-        //     object.collider.quaternion.copy(object.mesh.quaternion);
-        // }
+
         object.mesh.position.copy(object.collider.position);
+        // if (!object.isActor) {
         object.mesh.quaternion.copy(object.collider.quaternion);
+        // }
+
     });
 
 

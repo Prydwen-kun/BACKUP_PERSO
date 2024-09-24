@@ -1,5 +1,6 @@
 import { PointerLockControls } from './three.js-master/examples/jsm/controls/PointerLockControls.js';
 import * as THREE from './three.js-master/build/three.module.js';
+import * as CANNON from 'cannon-es'
 
 class player {
   constructor(name, camera, domElement, clock) {
@@ -53,7 +54,7 @@ class player {
 
 
   //UPDATE PLAYER
-  update(delta) {
+  update(delta, floor) {
 
     //EVENT WATCH
 
@@ -72,26 +73,49 @@ class player {
 
     }
 
-    //UP
-    if (this.keymap["KeyW"] == true) {
-      this.controls.moveForward(this.velocity * delta);
-    }
-    //DOWN
-    if (this.keymap["KeyS"] == true) {
-      this.controls.moveForward(this.velocity * delta * -1);
-    }
-    //LEFT
-    if (this.keymap["KeyA"] == true) {
-      this.controls.moveRight(this.velocity * delta * -1);
-    }
-    //RIGHT
-    if (this.keymap["KeyD"] == true) {
-      this.controls.moveRight(this.velocity * delta);
+    ////GET PLAYER DIRECTION///
+    let playerDirectionNormal = new THREE.Vector3(0, 0, 0);
+    this.camera.getWorldDirection(playerDirectionNormal);
+    playerDirectionNormal.normalize();
 
+
+
+    if (this.body !== null) {
+      let resultVector1 = new THREE.Vector3(0,0,0);
+      this.body.getVelocityAtWorldPoint(this.body.position, resultVector1);
+      let velocity1 = resultVector1.length();
+      //UP
+      if (this.keymap["KeyW"] == true && velocity1 <= this.velocity) {
+        this.body.applyForce(playerDirectionNormal.multiplyScalar(this.velocity), this.mesh.position);
+      }
+
+      // this.controls.moveForward(this.velocity * delta);
+
+      //DOWN
+      if (this.keymap["KeyS"] == true && velocity1 <= this.velocity) {
+        this.body.applyForce(playerDirectionNormal.multiplyScalar(-this.velocity), this.mesh.position);
+        // this.controls.moveForward(this.velocity * delta * -1);
+      }
+      //LEFT
+      if (this.keymap["KeyA"] == true && velocity1 <= this.velocity) {
+        // this.controls.moveRight(this.velocity * delta * -1);
+      }
+      //RIGHT
+      if (this.keymap["KeyD"] == true && velocity1 <= this.velocity) {
+        // this.controls.moveRight(this.velocity * delta);
+
+      }
     }
     if (typeof this.body !== undefined) {
-      this.body.position.copy(this.camera.position);
-      this.body.quaternion.copy(this.camera.quaternion);
+      //JUMP
+
+      if (this.keymap["Space"] == true && this.body.aabb.overlaps(floor.body.aabb)) {
+      }
+
+      //update collider position
+      this.camera.position.copy(this.body.position);
+      this.body.quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.camera.quaternion.w);
+      this.camera.position.y += .75;
     }
 
   }

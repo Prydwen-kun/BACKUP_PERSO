@@ -6,7 +6,7 @@ class mobs {
         this.health = health; //100
         this.velocity = velocity; //2.90
         this.size = new THREE.Vector3(1, 2, 1);
-        this.geometry = new THREE.BoxGeometry(this.size.x,this.size.y,this.size.z);
+        this.geometry = new THREE.BoxGeometry(this.size.x, this.size.y, this.size.z);
         this.material = new THREE.MeshLambertMaterial({ color: 0xee3311 });
         this.texture = loader.load('/herobrine.png');//need to wrap an eventual texture with wrapT // UV pos
         this.material1 = new THREE.MeshLambertMaterial({ map: this.texture });
@@ -34,20 +34,28 @@ class mobs {
 
     update(playerPosition, deltaTime) {
 
-        this.mesh.lookAt(playerPosition.x, playerPosition.y, playerPosition.z);
+        this.mesh.lookAt(playerPosition);
+
         let directionNormal = new THREE.Vector3(0, 0, 0);
         this.mesh.getWorldDirection(directionNormal);
         directionNormal.normalize();
 
         // this.mesh.translateOnAxis(directionNormal, this.velocity * deltaTime);
         // this.mesh.position.lerp(playerPosition, 0.005);
-        try {
-            if (this.body !== null) {
-                this.body.applyImpulse(directionNormal.multiplyScalar(this.velocity/20), this.mesh.position);
+
+        if (this.body !== null) {
+
+            let resultVector2 = new THREE.Vector3(0, 0, 0);
+            this.body.getVelocityAtWorldPoint(this.body.position, resultVector2);
+            let velocity2 = resultVector2.length();
+
+            this.body.quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.mesh.quaternion.w);
+            if (velocity2 <= this.velocity) {
+                this.body.applyForce(directionNormal.multiplyScalar(this.velocity), this.mesh.position);
             }
-        } catch (e) {
-            //console.log('error');
+
         }
+
 
         //DEBUG UPDATE CALL NUMBER
         // this.deltaSum += deltaTime;
